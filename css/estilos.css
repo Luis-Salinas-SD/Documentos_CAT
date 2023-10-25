@@ -1,0 +1,122 @@
+/* CSS Document */
+html {
+   min-height: 100%;
+   min-width: 100%;
+}
+#body{
+	/*border:solid 5px #66CC00;*/
+	width:1150px;
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+#ubica1{
+	height:500px;
+	width:750px;
+	/*float:right;*/
+	padding:5px;
+	margin-right:auto;
+	margin-left:auto;
+}
+#ubica2{
+	/*border:solid 3px #9933CC;*/
+	height:750px;
+	/*width:150px;*/
+	float:left;
+	padding:3px;
+}
+#ubica3{
+	margin-left:100px;
+	padding:25px;
+	/*border:solid 5px #FF0000;*/
+}
+
+#img {
+	list-style:none;
+	cursor:pointer;
+}
+#bordes{
+    display: table;
+	border:solid 2px #999999;
+	border-collapse:separate;
+}
+#bordes2{
+border-collapse:separate;
+border: solid 2px #999999;
+border-spacing:1px;
+}
+#index{
+	display:table;
+	width:300px;
+	border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: #CCCCCC;
+}
+
+.botton1{
+background-image:url(../img/reset.png);
+}
+.boxtex{
+    margin: 0px 0px 10px;
+    height:30px;
+    width: 515px;
+}
+.boxtex2{
+	width: 515px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    height: 93px;
+}
+#ubica6{
+	list-style: none;
+	vertical-align: middle;
+	margin-right: auto;
+	margin-left: auto;
+	height: 50px;
+	display:block;
+	width: 500px;
+}
+#ver{
+	height:24px;
+	width:24px;
+	margin-right: 150px;
+    float: right;
+	
+}
+#guardar{
+height: 24px;
+width: 24px;
+float: left;
+margin-left: 130px
+}
+a:link {
+	color:#999999;
+	text-decoration: underline;
+}
+a:visited {
+	text-decoration: none;
+	color: #666666;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.aceptar{
+	text-align: center;
+    padding: 10px;
+    /* border: solid 3px #0033CC; */
+    height: 48px;
+    widows: 129px;
+    display: block;
+    margin-left: 270px;
+}
+#ubica8{
+	margin-left:150px;
+	/*border:solid 5px #FF0000;*/
+}

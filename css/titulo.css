@@ -1,0 +1,52 @@
+#titulo{
+   background: url(../img/bannerCon1.png) no-repeat left bottom !important ; 
+	text-align: center;
+    margin: 0 auto;
+	position:relative !important;
+	padding-bottom:30px;
+	width:974px;
+	height:150px;
+	
+}
+
+#ver{
+	height:24px;
+	width:24px;
+	margin-right: 150px;
+    float: right;
+	
+}
+#guardar{
+height: 24px;
+width: 24px;
+float: left;
+margin-left: 130px
+}
+.aceptar{
+	background:url(../img/save.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.borrar{
+	background: url(../img/reset.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.tbl{
+	background: url(../img/ver.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.imprimir{
+	background:url(../img/imprimir.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.ayuda{
+	height: 38px;
+	text-align: right;
+	top:3px;
+	position: absolute;
+	margin: 5px;
+	padding: 5px;
+}

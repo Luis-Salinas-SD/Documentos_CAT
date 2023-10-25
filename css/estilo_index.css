@@ -1,0 +1,148 @@
+/* CSS Document*/
+
+html {
+	background: none !important;
+	height: 100%;
+	width: 100%;
+	}
+		
+				
+.ver {
+	clear: both;
+	z-index:1;
+	padding: 10px;
+	margin-top: 10px;
+	
+
+} 
+body {
+	
+	background-size: auto !important;
+	background-repeat:no-repeat;
+	margin: 0;
+	padding: 0;
+}
+
+#opcion {
+    padding: 5px;
+	cursor: pointer;
+	margin-left: 50%;
+	margin-top: 10px;
+
+	}
+input[type=button] {
+    padding: 5px;
+	cursor: pointer;
+	margin-left: 3%;
+	margin-top: 10px;
+	
+   }
+label {
+    display: inline-table;
+	margin-bottom: -10px;
+	padding: 20px;
+	font-size:22px;
+}
+
+.ubica1{
+ 	margin: auto;
+   	position:relative !important;
+}
+
+header{
+   background: url(../img/bannerCon1.png) no-repeat left bottom !important ; 
+	text-align: center;
+    margin: 0 auto;
+	position:relative !important;
+	padding-bottom:30px;
+	width:974px;
+	height:150px;
+	
+}
+
+.tab {
+  	text-align: center;
+    margin: 0 auto;
+	position:relative !important;
+	padding-bottom:30px;
+	width:600px;
+	height:50px;
+}
+
+
+button[type=button] {
+    padding: 5px;
+	cursor: pointer;
+	color: white;
+	background-color: green;
+	}
+#button {
+ 	padding: 0;
+	margin: 0 auto;
+ }
+
+#button li {
+ 	display: inline;
+ }
+
+#button li a {
+	 
+	 font-size: 16px;
+	 text-decoration: none;
+	 float: left;
+	 padding: 10px;
+	 background-color:darkgrey;
+	 color: white;
+ }
+
+#button li a:hover {
+	 background-color:dimgray;
+	 margin-top: -2;
+	 padding-bottom: 12px;
+	 color: white;
+	
+	
+ }
+#button li a:active {
+	 background-color:dimgray;
+	 margin-top: -2;
+	 padding-bottom: 12px;
+	 color: white;
+	 cursor: pointer;
+	 border: 1px solid #f5f2f2;
+
+box-sizing: border-box;
+ }
+.aceptar{
+	background:url(../img/save.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.borrar{
+	background: url(../img/reset.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.tbl{
+	background: url(../img/ver.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+.letra1{
+	font-size: 16px;
+}
+.letra2{
+	font-size: 12px;
+}
+.imprimir{
+	background:url(../img/imprimir.png)no-repeat left bottom !important ;
+	width: 28px;
+	height: 26px;
+}
+
+#ayuda{
+	height: 38px;
+	top: 0px;
+	position: absolute;
+	padding: 5px;
+}
