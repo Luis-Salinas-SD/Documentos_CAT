@@ -13,45 +13,46 @@ if (@!$_SESSION['cvesp']) {
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <!-- CSS y Scripts -->
     <?php include_once('./templates/header.php') ?>
-    <title>EMISION DE DOCUMENTOS</title>
-
+    <script src="js/bootstrap.min.js"></script>
+    <title>EMISION DE DOCUMENTOS | Modificar</title>
 </head>
-
 
 <body>
     <?php
     $tipo = $_SESSION['tipo_usuario'];
     if ($tipo == 1) {
     ?>
-        <!--! Nav Menu  -->
+
         <?php include_once('./nav-menu.php') ?>
+
         <div class="contenedor">
 
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2 class="text-secondary">Control de Documentos</h2>
+                    <h2>Control de Documentos</h2>
                 </div>
             </div>
 
+            <!-- Contenido -->
             <div class="card mt-5 mx-2">
                 <?php
                 $idfolio = $_POST['idfolio'];
                 $idarea = $_SESSION['idarea'];
                 ?>
+
                 <div class="row">
-                    <div class="col-12 text-end">
-                        <div class="m-2">
-                            <form id="ver" action="tabla_admon.php" method="post">
-                                <button type="submit" class="btn btn-secondary" title="Ver Tabla" id="opcion" value="Regresar">
-                                    <img src="./assets/icons/back.svg" alt="" height="20px;">
-                                    <span>Atrás</span>
-                                </button>
-                            </form>
-                        </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <form id="ver" action="tabla_admon.php" method="post">
+                            <button type="submit" class="btn btn-secondary m-3" id="opcion">
+                                <img src="./assets/icons/back.svg" alt="" srcset="">
+                                Atrás
+                            </button>
+                        </form>
                     </div>
                 </div>
-                <form action="guardar_modificar.php" method="post" class="form-control" enctype="multipart/form-data">
+
+                <form action="guardar_modificar.php" method="post" enctype="multipart/form-data" class="p-3">
                     <input name="idfolio" type="hidden" value="<?php echo $idfolio ?>" />
 
                     <?php
@@ -66,11 +67,12 @@ if (@!$_SESSION['cvesp']) {
 
                     ?>
 
+
                     <fieldset class="p-2">
-                        <div class="row text-primary">
+                        <div class="row txt-green">
                             <h4>Asunto / Documento</h4>
                         </div>
-                        <hr class="text-primary mb-4">
+                        <hr class="txt-green mb-4">
 
                         <div class="row mb-4">
 
@@ -86,12 +88,12 @@ if (@!$_SESSION['cvesp']) {
 
                         </div>
 
-                        <div class="row text-primary">
+                        <div class="row txt-green">
                             <h4>
                                 Detalle del Documento
                             </h4>
                         </div>
-                        <hr class="text-primary mb-4">
+                        <hr class="txt-green mb-4">
 
                         <div class="row mb-4">
                             <div class="col-12 col-sm-6 mb-3">
@@ -120,7 +122,7 @@ if (@!$_SESSION['cvesp']) {
                             <!--mostrar archivo para modificar -->
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                             <label for="archivo" class="form-label">Archivo</label>
 
                             <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf">
@@ -167,41 +169,32 @@ if (@!$_SESSION['cvesp']) {
                             </div>
                         </div>
                     </fieldset>
+
                 </form>
-
-            </div>
-
-            <div class="card mt-3 mx-2">
-                <div class="row p-3">
-                    <div class="col-12">
-                        <?php include('asignar.php') ?>
-                    </div>
-                    <div id="muestra">
-                        <?php // include("tabla_asigna.php");
-                        ?>
-                    </div>
+                <div class="col-12">
+                    <?php include('asignar.php') ?>
+                </div>
+                <div id="muestra">
+                    <?php
+                    // include("tabla_asigna.php");
+                    ?>
                 </div>
             </div>
 
         </div>
 
-
     <?php
-
     } elseif ($tipo == 2) {
-
         header("Location:tabla_super.php");
     } elseif ($tipo == 3) {
-
         header("Location:tabla_usu.php");
     } elseif ($tipo == 4) {
-
         header("Location:tabla_oficialia.php");
     } else {
         header("Location:index.php");
     }
-
     ?>
+
     <?php include_once('./templates/scripts.php') ?>
 </body>
 

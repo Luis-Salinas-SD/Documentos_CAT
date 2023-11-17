@@ -9,93 +9,88 @@ if (@!$_SESSION['cvesp']) {
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/tcal.css" />
-    <link rel="stylesheet" href="css/estilo_index.css">
-    <link rel="stylesheet" href="./css/estilo.css" />
-    <script type="text/javascript" src="./js/tcal.js"></script>
-    <script type="text/javascript" src="./js/activar.js"></script>
-
-    <title>CONTROL DE DOCUMENTACION </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- CSS y Scripts -->
+    <?php include_once('./templates/header.php') ?>
+    <title>Control de Documentación</title>
 </head>
 
 <body>
-<?php
-$tipo=$_SESSION['tipo_usuario'];
-    if($tipo==3){
-?> 
-    <header></header>
-    <table width="980" class="ubica1">
-        <td width="479" align="left"><a> Bienvenido <strong>
-                    <?php echo $_SESSION['nombre']; ?></strong></a> </td>
-        <td width="105" align="right"><a href="desconectar.php"> Cerrar Sesion </a></td>
-    </table>
+    <?php
+    $tipo = $_SESSION['tipo_usuario'];
+    if ($tipo == 3) {
+    ?>
+        <!--! Nav Menu  -->
+        <?php include_once('./nav-menu.php') ?>
 
 
-    <div class="header row">
-        <div class="navegacion col">
+        <div class="contenedor">
 
-            <nav class="navbar navbar-default" role="navigation">
+            <!-- Header -->
+            <div class="card mb-5 m-2 shadow">
+                <div class="card-body">
+                    <h3 class="text-secondary">Resolución</h3>
+                </div>
+            </div>
 
-                <ul id="button">
-
-
-                    <li><a href="tabla_usu.php">REGRESAR A TABLA</a></li>
-                    <li><a href="historial_usuario.php">HISTORIAL</a></li>
-
-
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <div class="container">
-
-        <div class="row">
-            <div class="col-12">
-                <?php 
+            <div class="card mx-2 p-2">
+                <?php
                 $idfolio = $_POST['idfolio'];
                 ?>
-                <form action="guardar_res_usu.php" method="post" class="form-control" enctype="multipart/form-data" >
 
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <div class="m-1">
+                            <form id="ver" action="tabla_usu.php" method="post">
+                                <button type="submit" class="btn btn-secondary" id="opcion">
+                                    <img src="./assets/icons/back.svg" alt="" srcset="">
+                                    Atrás
+                                </button>
+                            </form>
+                        </div>
+                        <div class="m-1">
+                            <a href="historial_usuario.php" class="btn btn-vino">HISTORIAL</a>
+                        </div>
+                    </div>
+                </div>
 
-                    <?php 
+                <form action="guardar_res_usu.php" method="post" enctype="multipart/form-data">
+
+                    <?php
+                    $i = 1;
                     require("./bd/conndb1.php");
                     $conexion = getConn();
                     $usu = $_SESSION['id_usuario'];
-
-                    $sql = "SELECT * FROM tbl_docs, tbl_asignados, tbl_usuarios 
+                    $sql = "SELECT * FROM tbl_docs, tbl_asignados, tbl_usuarios
                             WHERE tbl_docs.Idfolio=$idfolio
                             and tbl_docs.Idfolio=tbl_asignados.idfolio
                             and tbl_asignados.cvesp=tbl_usuarios.id_usuario
                             and tbl_asignados.cvesp=$usu ";
                     $result = $conexion->query($sql);
                     $row = $result->fetch(PDO::FETCH_ASSOC);
-
                     ?>
                     <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
                     <input type="hidden" name="referencia" value="<?php echo $row['docreferencia']; ?>">
 
-                    <fieldset class="fieldset1">
-                        <legend class="legend1 estilo4">
-                            Resolución </legend>
-                        <div class="row">
-                            <div class="col-sm-4">
+                    <fieldset class="p-2">
+                        <div class="row txt-green">
+                            <h4>Resolución</h4>
+                        </div>
+                        <hr class="txt-green mb-4">
 
-                                <p> Tipo de Documento de la resolución </p>
+                        <div class="row mb-2">
+                            <div class="col-12 col-sm-4">
+                                <label for="" class="form-label">Tipo de Documento de la resolución</label>
                                 <input name="tipo_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="1">
                             </div>
-                            <div class="col-sm-4">
-                                <p>Número de Documento de la resolución </p>
+                            <div class="col-12 col-sm-4">
+                                <label for="" class="form-label">Número de Documento de la resolución</label>
                                 <input name="num_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="2">
                             </div>
-                            <div class="col-sm-4">
-                                <p>Fecha de la resolución</p>
-                                <?php 
+                            <div class="col-12 col-sm-4">
+                                <label for="">Fecha de la resolución</label>
+                                <?php
                                 date_default_timezone_set('America/Mexico_City');
                                 $fecha = date('y/m/d');
                                 ?>
@@ -103,115 +98,137 @@ $tipo=$_SESSION['tipo_usuario'];
                                 <input name="fechares" type="hidden" value="20<?php echo $fecha; ?>" />
                             </div>
                         </div>
-                        <div class="row ">
-                        <div class="col-sm-8">
-                                <p>Notas: </p>
+
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <label for="" class="form-label">Notas:</label>
                                 <input name="nota" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="3">
                             </div>
                         </div>
 
-
                     </fieldset>
 
-                    <fieldset class="fieldset1">
-                        <legend class="legend1 estilo4">
-                            <p>Asunto / Documento </p>
-                        </legend>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p>Fecha</p>
+                    <fieldset class="p-2">
+                        <div class="row txt-green">
+                            <h4>Asunto / Documento</h4>
+                        </div>
+                        <hr class="txt-green mb-4">
 
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-3">
+                                <label for="" class="form-label">Fecha</label>
                                 <input name="fechaact" id="fechaid1" disabled="disabled" type="text" value="<?php echo $fecha = $row['fechaact']; ?>" class="form-control" />
                             </div>
-                            <div class="col-sm-8">
-                                <p>Remitente</p>
-                                <p><input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>">
+                            <div class="col-12 col-sm-9">
+                                <label for="" class="form-label">Remitente</label>
+                                <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="p-2">
+                        <div class="row txt-green">
+                            <h4>Detalle del Documento</h4>
+                        </div>
+                        <hr class="txt-green mb-4">
+
+                        <div class="row mb-3">
+                            <div class="col-12 col-sm-3">
+                                <label class="form-label">Fecha de emisión del documento</label>
+                                <input name="fechadoc" id="fechaid1" disabled="disabled" type="text" value="<?php echo $fecha = $row['fecha_doc']; ?>" class="form-control" />
+                            </div>
+                            <div class="col-12 col-sm-9">
+                                <label class="form-label">Referencia</label>
+                                <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label for="" class="form-label">Descripción</label>
+                                <textarea name="asunto" class="form-control" disabled="disabled" value=""> <?php echo $row['descripcion']; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label for="" class="form-label">Observaciones</label>
+                                <input name="observacion" disabled="disabled" class="form-control" type="text" value="<?php echo $row['observacion']; ?>">
                             </div>
                         </div>
 
-                        <fieldset class="fieldset1">
-                            <legend class="legend1 estilo4">
-                                <p>Detalle del Documento</p>
-                            </legend>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <p>Fecha de emisión del documento</p>
-                                    <p><input name="fechadoc" id="fechaid1" disabled="disabled" type="text" value="<?php echo $fecha = $row['fecha_doc']; ?>" class="form-control" />
-                                </div>
-                                <div class="col-sm-4">
-                                    <p>Referencia</p>
-                                    <p><input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <input name="usu" type="hidden" value="<?php echo $_SESSION['id_usuario']; ?>" />
+                                <!--mostrar archivo para modificar-->
+                                <label for="archivo" class="control-label">Archivo</label>
+                                <input type="file" class="form-control mb-3" id="archivo" name="archivo">
+                                <?php
+                                $path = "files/" . $idfolio;
+                                if (file_exists($path)) {
+                                    $directorio = opendir($path);
+                                    while ($archivo = readdir($directorio)) {
+                                        $i++;
+                                        if (!is_dir($archivo)) {
+                                            //echo "$archivo";
+                                            //   echo "$archivo <a href='#' class='delete' title='Ver Archivo Adjunto' ><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>                                       </div>";
+                                            //echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550'></iframe></div>";
+                                            echo "<button type='button' class='btn btn-danger m-1' data-bs-toggle='modal' data-bs-target='#ident_$i' data-toggle='tooltip' data-placement='top' title='$archivo'><img src='./assets/icons/pdf.svg'> </button>";
+                                            //echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550'></iframe></div>";
+                                            echo "<div class='modal fade' id='ident_$i' tabindex='-1' aria-labelledby='$archivo' aria-hidden='true'>
+                                                <div class='modal-dialog modal-dialog-centered modal-xl'>
+                                                    <div class='modal-content'>
+                                                        <div class='modal-header'>
+                                                            <h5 class='modal-title text-capitalize' id='exampleModalLabel'>$archivo</h5>
+                                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                        </div>
+                                                        <div class='modal-body'>
+                                                            <div class='center'><iframe src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550'></iframe></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>";
+                                        }
+                                    }
+                                }
+                                ?>
                             </div>
-                            <p>Descripción</p>
-                            <p><textarea name="asunto"  class="form-control" disabled="disabled" value="" > <?php echo $row['descripcion']; ?></textarea>
 
-                                <p>Observaciones</p>
-                                <p><input name="observacion" disabled="disabled" class="form-control" type="text" value="<?php echo $row['observacion']; ?>">
+                        </div>
 
-                        </fieldset>
-
-                        <input name="usu" type="hidden" value="<?php echo $_SESSION['id_usuario']; ?>" />
-<!--mostrar archivo para modificar 
-                    
-					<label for="archivo" class="col-sm-2 control-label">Archivo</label>-->
-					<div class="col-sm-10">
-					<input type="file" class="form-control" id="archivo" name="archivo">
-						
-						<?php 
-							$path = "files/".$idfolio;
-							if(file_exists($path)){
-								$directorio = opendir($path);
-								while ($archivo = readdir($directorio))
-								{
-									if (!is_dir($archivo)){
-                                        echo "$archivo";
-                                     //   echo "$archivo <a href='#' class='delete' title='Ver Archivo Adjunto' ><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>                                       </div>";
-										echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='120%' frameborder='0' height='550'></iframe></div>";
-									}
-								}
-							}
-							
-						?>
-						
-					</div>
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <input type="submit" title="Guardar" value=" " class="aceptar" id="opcion" tabindex="4" /></div>
-                            <div class="col-sm-4">
+                        <div class="row mb-2">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input type="submit" title="Guardar" value="Guardar" class="btn btn-success" id="opcion" tabindex="4" />
                             </div>
+                        </div>
+
+
+
+
+                    </fieldset>
+
                 </form>
 
-                <div class="col-sm-4">
-                    <form id="ver" action="tabla_usu.php" method="post">
-                        <input type="submit" class="tbl" title="Ver Tabla" id="opcion" value=" " tabindex="5" />
-                    </form>
-                </div>
             </div>
 
+
+
         </div>
-    </div>
-    </div>
     <?php
-  }elseif($tipo==1){
+    } elseif ($tipo == 1) {
 
-    header("Location:tabla_admon.php");
+        header("Location:tabla_admon.php");
+    } elseif ($tipo == 2) {
 
-  }elseif($tipo==2){
-
-    header("Location:tabla_super.php");
-
-      }elseif($tipo==4){
+        header("Location:tabla_super.php");
+    } elseif ($tipo == 4) {
 
         header("Location:tabla_oficialia.php");
+    } else {
+        header("Location:index.php");
+    }
+    ?>
 
-  }else{
-      header("Location:index.php");
+    <?php include_once('./templates/scripts.php') ?>
 
-  }
-
-?> 
 </body>
 
-</html> 
+</html>

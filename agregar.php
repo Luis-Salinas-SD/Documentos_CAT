@@ -13,7 +13,6 @@ if (!empty($_POST)) {
 	if (isset($_POST['folio']) && isset($_POST['usuario']) && isset($_POST['concepto']) && isset($_POST['area'])) {
 		if ($_POST["folio"] != "" && $_POST["usuario"] != "" && $_POST["concepto"] != "" && $_POST["area"] != "") {
 
-			echo "<br>";
 			include "./bd/conexion.php";
 			$idfolio = trim($_POST['folio']);
 			$cvesp = trim($_POST['usuario']);

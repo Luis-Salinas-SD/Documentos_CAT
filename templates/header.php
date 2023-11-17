@@ -1,6 +1,6 @@
 <!-- CSS - LS -->
-<link rel="stylesheet" href="assets/styles/styles.css">
 <link rel="stylesheet" href="assets/styles/bootstrap.css" />
+<link rel="stylesheet" href="assets/styles/styles.css">
 <!-- <link rel="stylesheet" href="css/titulo.css" /> -->
 <!-- dataTables -ls -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">

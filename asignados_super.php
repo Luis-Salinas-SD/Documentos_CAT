@@ -1,7 +1,7 @@
 <tr>
 
     <td class="center">
-        <?php echo $x; ?>
+        <?php echo $i; ?>
     </td>
     <td class="center">
         <?php echo $fecha_doc; ?>
@@ -15,46 +15,40 @@
     <td class="center">
         <?php echo $descripcion; ?>
     </td>
-    
-    <?php 
-   
-    $sql = "SELECT COUNT(*) as total , estatus FROM tbl_resolucion  
-        WHERE docref =$idfolio
-        and estatus=1";
+
+    <?php
+    $sql = "SELECT COUNT(*) as total , estatus FROM tbl_resolucion WHERE docref =$idfolio and estatus=1";
     $resul = $conexion->query($sql);
     $row = $resul->fetch(PDO::FETCH_ASSOC);
     if ($row['total'] >= 1) {
-        ?>
-    <td class="center">
-    <div class="alert-success">
-            EN PROCESO
-        </div>
-    </td>
+    ?>
 
-    <td class="center">
-        <form name="resolucion" method="post" action="./resolucion3.php">
-            <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
-            <input type="submit" name="resolucion" class=" btn-info" value="RESOLUCION">
+        <td class="pt-3">
+            <span class="alert alert-amarillo">
+                En proceso...
+            </span>
+        </td>
 
-        </form>
-    </td>
+        <td class="center d-flex">
 
-    <td class="center">
-        <form name="modificar" method="post" action="./modificar_super.php">
-            <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
-            <input type=image src="./img/mofi.png" name="modificar">
+            <form name="resolucion" method="post" action="./resolucion3.php">
+                <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
+                <button type="submit" name="resolucion" class="btn btn-success p-1 mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Resolución">
+                    <img src="assets/icons/info.svg">
+                </button>
+            </form>
 
-        </form>
-    </td>
+            <form name="modificar" method="post" action="./modificar_super.php">
+                <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
+                <button type="submit" name="modificar" class="btn btn-warning p-1 mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Modificar">
+                    <img src="assets/icons/edit.svg">
+                </button>
+            </form>
 
-    
-    <td class="center">
-   
-        <?php
-         $usu = $_SESSION['id_usuario'];
+            <?php
+            $usu = $_SESSION['id_usuario']; //4
 
-      $query = "SELECT * FROM tbl_docs,tbl_asignados, tbl_resolucion
-                        WHERE tbl_docs.fechaact >= '2019-01-01'
+            $query = "SELECT * FROM tbl_docs,tbl_asignados, tbl_resolucion WHERE tbl_docs.fechaact >= '2019-01-01'
                         and tbl_asignados.cvesp=$usu
                         and tbl_resolucion.estatus=1
                         and tbl_asignados.cvesp=tbl_resolucion.sprecibe
@@ -64,50 +58,51 @@
                         order by tbl_docs.idfolio desc";
 
             $resul = $conexion->query($query);
-               
-              //  $numfilas = $query->rowCount();
-              $row = $resul->fetch(PDO::FETCH_ASSOC);
-                 $usuarios= $row['cvesp'];
-             if ($usuarios<>$usu)  {   
-                ?>
-                            
-             <?php            
-                } else{
-                    
-                    ?>
-                  
-                  <a href="resolucion_super.php?idfolio=<?php echo $idfolio; ?>" class="spinner-border text-warning">
-                  <input type=image src="./img/notificacion.png" name="notificacion"></a>
-                <?php
-                 
-                }
+            //$numfilas = $query->rowCount();
+            $row = $resul->fetch(PDO::FETCH_ASSOC); //false
+
+            $row = $resul->fetch(PDO::FETCH_ASSOC);
+            $usuarios = $row['cvesp'];
+            if ($usuarios <> $usu) {
+            ?>
+
+
+            <?php
+            } else {
+
+            ?>
+
+                <a href="resolucion_super.php?idfolio=<?php echo $idfolio; ?>" class="spinner-border text-warning px-2">
+                    <input type=image src="./img/notificacion.png" name="notificacion" width="23"></a>
+            <?php
+
+            }
             //}
-                 ?>
-                    </td> 
+            ?>
+        </td>
 
 
-                <?php
-                } else
-                if ($row['total'] == 0) {
-                    ?>
-
-    <td class="center">
-        <div class=" alert-danger">
-            <strong>FINALIZADO</strong>
-        </div>
-    </td>
-
-    <td class="center">
-        <form name="resolucion" method="post" action="./resolucion3.php">
-            <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
-            <input type="submit" name="resolucion" class=" btn-warning" value="VER DETALLE">
-
-        </form>
-    </td>
-   
     <?php
+    } else if ($row['total'] == 0) {
+    ?>
 
-}
-//}
+        <td class="center">
+            <span class="alert alert-verde" style="width: 104px;">
+                Finalizado
+            </span>
+        </td>
 
-?> 
+        <td class="center">
+            <form name="resolucion" method="post" action="./resolucion3.php">
+                <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
+                <button type="submit" name="resolucion" class="btn btn-primary p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver más">
+                    <img src="assets/icons/eye.svg">
+                </button>
+            </form>
+        </td>
+
+    <?php
+    }
+    //}
+    ?>
+</tr>

@@ -9,13 +9,11 @@ if (@!$_SESSION['cvesp']) {
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/estilo_index.css">
-
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<title>CONTROL DE DOCUMENTACION</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, width=device-width">
+	<!-- CSS y Scripts -->
+	<?php include_once('./templates/header.php') ?>
+	<title>Control de Documentación</title>
 </head>
 
 <body>
@@ -25,172 +23,119 @@ if (@!$_SESSION['cvesp']) {
 	?>
 
 		<?php include_once('./nav-menu.php') ?>
-		<header>
 
-		</header>
-		<table width="980" class="ubica1">
-			<td width="479" align="left"><a> Bienvenido <strong><?php echo $_SESSION['nombre']; ?></strong></a> </td>
+		<div class="contenedor">
 
-			<td width="105" align="right"><a class="external" href="./Manuales/analista.pdf">
-					<input id="ayuda" type="image" src="./img/help.png" alt="Ayuda" title="Ayuda">
-				</a>
-			</td>
-
-			<td width="105" align="right"><a href="desconectar.php"> Cerrar Sesion </a></td>
-		</table>
-
-
-		<div class="header row">
-			<div class="navegacion col">
-
-				<nav class="navbar navbar-default" role="navigation">
-
-					<ul id="button">
-
-
-						<li><a href="tabla_usu.php">REGRESAR A TABLA</a></li>
-						<li><a href="historial_usuario.php">HISTORIAL</a></li>
-
-
-					</ul>
-				</nav>
+			<!-- Header -->
+			<div class="card mb-5 m-2 shadow">
+				<div class="card-body">
+					<h3 class="text-secondary">Control de Documentos
+						<?php $date = date_create('2000');
+						echo date_format($date, 'Y'); ?>
+					</h3>
+				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
+			<div class="card mx-2">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-12 d-flex justify-content-end">
+							<div class="m-1">
+								<a href="historial_usuario.php" class="btn btn-vino">
+									Historial
+								</a>
+							</div>
+						</div>
+					</div>
 
-					<table id="ubica1" class="table table-striped">
-						<thead>
-							<tr id="bordes2">
-								<th id="bordes2" colspan="11">
-									<p class="Estilo4">CONTROL DE DOCUMENTOS
+					<div class="table-responsive m-3 p-3">
+						<table class="table table-bordered print-friendly hover m-2" id="catDocs">
+							<thead>
+								<tr class="text-center">
+									<th>Consecutivo</th>
+									<th>Fecha del Documento</th>
+									<th>Número de Oficio</th>
+									<th>Nombre del remitente</th>
+									<th>Concepto</th>
+									<th>Estatus</th>
+									<th>Accion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								require('./bd/conndb1.php');
+								$conexion = getConn();
+								$usu = $_SESSION['id_usuario'];
 
-										<?php $date = date_create('2000');
-										echo date_format($date, 'Y'); ?> </p>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="letra1">
-								<td>
-									<div align="center"><em><strong><span> Consecutivo </span></strong></em></div>
-								</td>
+								$_pagi_sql = "SELECT * FROM tbl_docs,tbl_asignados, tbl_resolucion WHERE tbl_docs.fechaact >= '2019-01-01'
+											and tbl_asignados.cvesp=$usu
+											and tbl_resolucion.estatus=1
+											and tbl_asignados.cvesp=tbl_resolucion.sprecibe
+											and tbl_asignados.idfolio=tbl_docs.Idfolio
+											and tbl_docs.idfolio=tbl_resolucion.docref
+											order by tbl_docs.idfolio desc";
 
-								<td>
-									<div align="center"><em><strong><span> Fecha del Documento</span></strong></em></div>
-								</td>
-								<td id="bordes2">
-									<div align="center"><em><strong><span> Numero de Oficio </span></strong></em></div>
-								</td>
-								<td id="bordes2">
-									<div align="center"><em><strong><span> Nombre del remitente</span></strong></em></div>
-								</td>
-								<td id="bordes2">
-									<div align="center"><em><strong><span> Concepto</span></strong></em></div>
-								</td>
-								<td colspan="2" id="bordes2">
-									<div align="center"><em><strong><span> Estatus</span></strong></em></div>
-								</td>
-
-							</tr>
-
-
-							<?php
-							require('./bd/conndb1.php');
-							$conexion = getConn();
-							$usu = $_SESSION['id_usuario'];
-
-							$_pagi_sql = "SELECT * FROM tbl_docs,tbl_asignados, tbl_resolucion
-	WHERE tbl_docs.fechaact >= '2019-01-01'
-	and tbl_asignados.cvesp=$usu
-	and tbl_resolucion.estatus=1
-    and tbl_asignados.cvesp=tbl_resolucion.sprecibe
-	and tbl_asignados.idfolio=tbl_docs.Idfolio
-	and tbl_docs.idfolio=tbl_resolucion.docref
-	order by tbl_docs.idfolio desc";
-
-							//and fecha >='2019-01-01'
-							$_pagi_result = $conexion->query($_pagi_sql);
-							$numfilas = $_pagi_result->rowCount();
-							if ($numfilas == 0) {
-								echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
-							} else {
-
-								$_pagi_nav_estilo = "cls_pagi";
-								$enlacesdepaginacion = 11;
-
-								include("paginator2.inc.php");
-
-								while ($i <= 1) {
-									$x = $_pagi_hasta;
-
-									while ($row = $_pagi_result->fetch(PDO::FETCH_ASSOC)) {
-
-							?>
-										<tr class="letra2" id="bordes2">
-											<td id="bordes2">
-												<div align="center"><span> <?php echo $x; ?></span></div>
-											</td>
-											<td id="bordes2">
-												<div align="center"><span><?php echo $row['fecha_doc']; ?></span></div>
-											</td>
-											<td id="bordes2">
-												<div align="center"><span> <?php echo $row['docreferencia']; ?></span></div>
-											</td>
-											<td id="bordes2">
-												<div align="center"><span><?php echo $row['remitente']; ?></span></div>
-											</td>
-											<td id="bordes2">
-												<div align="center"><span><?php echo $row['descripcion']; ?></span></div>
-											</td>
-											<td id="bordes2">
-												<div align="center" class="alert alert-success"><span>
-														<strong>En proceso</strong>
-													</span></div>
-											</td>
-
-											<td align="center" id="bordes2">
-												<form name="resolucion" method="post" action="./resolucion_usu.php">
-													<input type="hidden" name="idfolio" value="<?php echo $row['Idfolio'] ?>">
-													<input type="submit" name="resolucion" class="btn btn-info" value="RESOLUCION">
-
-												</form>
-											</td>
-
-
-
-
-										</tr>
-									<?php
-										$i++;
-										$x--;
+								//and fecha >='2019-01-01'
+								$_pagi_result = $conexion->query($_pagi_sql);
+								$numfilas = $_pagi_result->rowCount();
+								if ($numfilas == 0) {
+									echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
+								} else {
+									$_pagi_nav_estilo = "cls_pagi";
+									$enlacesdepaginacion = 11;
+									include("paginator2.inc.php");
+									while ($i <= 1) {
+										$x = $_pagi_hasta;
+										while ($row = $_pagi_result->fetch(PDO::FETCH_ASSOC)) {
+								?>
+											<tr class="text-center">
+												<td>
+													<span><?php echo $x; ?></span>
+												</td>
+												<td>
+													<span><?php echo $row['fecha_doc']; ?></span>
+												</td>
+												<td>
+													<span> <?php echo $row['docreferencia']; ?>
+												</td>
+												<td>
+													<span><?php echo $row['remitente']; ?></span>
+												</td>
+												<td>
+													<span><?php echo $row['descripcion']; ?></span>
+												</td>
+												<td>
+													<div class="alert alert-amarillo" style=" width: 125px;">
+														<span>En proceso...</span>
+													</div>
+												</td>
+												<td>
+													<form name="resolucion" method="post" action="./resolucion_usu.php">
+														<input type="hidden" name="idfolio" value="<?php echo $row['Idfolio'] ?>">
+														<!-- <input type="submit" name="resolucion" class="btn btn-info" value="resolución"> -->
+														<button type="submit" name="resolucion" class="btn btn-success p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Resolución">
+															<img src="assets/icons/info.svg">
+														</button>
+													</form>
+												</td>
+											</tr>
+										<?php
+											$i++;
+											$x--;
+										}
+										$sig = $_Num_regis_Consul + 1;
+										?>
+								<?php
 									}
-									$sig = $_Num_regis_Consul + 1;
-									?>
-
-							<?php
-
 								}
-							}
-							?>
-						</tbody>
-					</table>
-					<?php
-
-					$conexion = null;
-					if ($numfilas == 0) {
-					} else {
-						echo "<div id = \"cls_pagi\"><p align=\"center\">" . $_pagi_navegacion . "</p>";
-					}
-
-					?>
+								?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("a.external").on('click', function() {
@@ -215,6 +160,9 @@ if (@!$_SESSION['cvesp']) {
 	}
 
 	?>
+
+	<?php include_once('./templates/scripts.php') ?>
+
 
 </body>
 

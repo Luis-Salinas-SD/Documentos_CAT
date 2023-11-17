@@ -1,6 +1,6 @@
-<div class="col-sm-12" id="tbl_asig">
+<div class="col-12 table-responsive mb-3" id="tbl_asig">
     <table class="table table-bordered">
-        <thead>
+        <thead class="h-verde">
             <tr>
                 <th>Área</th>
                 <th>Servidor Público</th>
@@ -17,14 +17,13 @@
             <?php
 
             $sql = "SELECT a.idreg as idasigna, s.area as area,  u.cvesp as cvesp,
-            u.nombre as sp, c.tarea as concep, r.tipodocref , r.nodoc, r.fecha, r.nota as nota
-           from  tbl_asignados a, tbl_usuarios u, cat_areas s, cat_conceptos c,tbl_resolucion r
-           where u.id_usuario = a.cvesp
-                   and s.id = u.idarea
-                   and  c.id = a.idconcepto
-                   and r.docref= a.idfolio
-                   and u.id_usuario=r.sprecibe
-			        and a.idfolio = $idfolio";
+            u.nombre as sp, c.tarea as concep, r.tipodocref , r.nodoc, r.fecha, r.nota as nota from  tbl_asignados a, tbl_usuarios u, cat_areas s, cat_conceptos c,tbl_resolucion r
+            where u.id_usuario = a.cvesp
+            and s.id = u.idarea
+            and  c.id = a.idconcepto
+            and r.docref= a.idfolio
+            and u.id_usuario=r.sprecibe
+            and a.idfolio = $idfolio";
             $resultado = $conexion->query($sql);
             while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
                 $idasigna = $row['idasigna'];

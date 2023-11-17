@@ -16,7 +16,7 @@ if ($f = $resultado->fetch(PDO::FETCH_ASSOC)) {
 
 		if ($des == '0') {
 			if ($tipo == 1) {
-				$sql1 = "UPDATE  tbl_usuarios SET estado='1' WHERE cvesp= '$usuario' and tipo_usuario=$tipo";
+				$sql1 = "UPDATE tbl_usuarios SET estado='1' WHERE cvesp= '$usuario' and tipo_usuario=$tipo";
 				$result1 = $conexion->query($sql1);
 				$_SESSION['cvesp'] = $f['cvesp'];
 				$_SESSION['nombre'] = $f['nombre'];
@@ -72,9 +72,3 @@ if ($f = $resultado->fetch(PDO::FETCH_ASSOC)) {
 
 	echo "<script>location.href='index.php'</script>";
 }
-
-?>
-
-<script>
-	setTimeout('document.location.reload()', 20000);
-</script>

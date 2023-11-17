@@ -25,7 +25,7 @@ if (@!$_SESSION['cvesp']) {
         <?php include_once('./nav-menu.php') ?>
         <div class="contenedor">
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2  bg-vino">
                 <div class="card-body">
                     <h2>Control de Documentos</h2>
                 </div>
@@ -40,19 +40,17 @@ if (@!$_SESSION['cvesp']) {
                 require("./bd/conndb1.php");
                 $conexion = getConn();
                 $usu = $_SESSION['cvesp'];
-
                 $sql = "SELECT * FROM tbl_docs WHERE tbl_docs.Idfolio=$idfolio ";
                 $result = $conexion->query($sql);
                 $row = $result->fetch(PDO::FETCH_ASSOC);
-
                 ?>
 
-                <form action="crearpt.php" method="post" class="form-control" enctype="multipart/form-data">
+                <form action="crearpt.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
 
 
-                    <fieldset class="p-2">
-                        <div class="row text-primary">
+                    <fieldset class="p-3">
+                        <div class="row txt-green">
                             <h4>Asunto / Documento</h4>
                         </div>
                         <hr class="text-primary mb-4">
@@ -69,10 +67,8 @@ if (@!$_SESSION['cvesp']) {
                             </div>
                         </div>
 
-                        <div class="row text-primary">
-                            <h4>
-                                Detalle del Documento
-                            </h4>
+                        <div class="row txt-green">
+                            <h4>Detalle del Documento</h4>
                         </div>
                         <hr class="text-primary mb-4">
 
@@ -108,7 +104,7 @@ if (@!$_SESSION['cvesp']) {
 
                         <div class="col-sm-12">
                             <!--<input type="file" class="form-control" id="archivo" name="archivo">-->
-                            <h5>Archivos Adjuntos</h5>
+                            <h5 class="txt-green">Archivos Adjuntos</h5>
 
                             <?php
                             $path = "files/" . $idfolio;

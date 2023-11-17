@@ -27,9 +27,9 @@ if (@!$_SESSION['cvesp']) {
         <div class="contenedor">
 
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2 class="text-secondary">Resolución</h2>
+                    <h2>Resolución</h2>
                 </div>
             </div>
 
@@ -49,10 +49,11 @@ if (@!$_SESSION['cvesp']) {
                         </div>
                     </div>
                 </div>
+
                 <form action="guardar_resolucion.php" method="post" class=" m-3" enctype="multipart/form-data">
 
                     <?php
-                    $i = 0;
+                    $i = 1;
                     require("./bd/conndb1.php");
                     $conexion = getConn();
                     $usu = $_SESSION['id_usuario'];
@@ -70,12 +71,10 @@ if (@!$_SESSION['cvesp']) {
                     <input type="hidden" name="referencia" value="<?php echo $row['docreferencia']; ?>">
 
 
-                    <div class="row text-primary">
-                        <h4>
-                            Resolución
-                        </h4>
+                    <div class="row txt-green">
+                        <h4>Resolución</h4>
                     </div>
-                    <hr class="text-primary mb-4">
+                    <hr class="txt-green mb-4">
 
                     <div class="row">
                         <div class="col-sm-4">
@@ -104,12 +103,10 @@ if (@!$_SESSION['cvesp']) {
                         </div>
                     </div>
 
-                    <div class="row text-primary">
-                        <h4>
-                            Asunto / Documento
-                        </h4>
+                    <div class="row txt-green">
+                        <h4>Asunto / Documento</h4>
                     </div>
-                    <hr class="text-primary mb-4">
+                    <hr class="txt-green mb-4">
 
                     <div class="row mb-3">
                         <div class="col-12 col-sm-5">
@@ -128,23 +125,23 @@ if (@!$_SESSION['cvesp']) {
                         </div>
                     </div>
 
-                    <div class="row text-primary">
+                    <div class="row txt-green">
                         <h4>Detalle del Documento</h4>
                     </div>
-                    <hr class="text-primary mb-4">
+                    <hr class="txt-green mb-4">
 
                     <div class="row mb-2">
                         <div class=" col-12 col-sm-6">
                             <label for="" class="form-label">
                                 Fecha de emisión del documento
                             </label>
-                            <p> <input name="fechadoc" id="fechaid1" type="date" value="<?php echo $fecha = $row['fecha_doc']; ?>" required="required" class="form-control" disabled="disabled" tabindex="3" />
+                            <input name="fechadoc" id="fechaid1" type="date" value="<?php echo $fecha = $row['fecha_doc']; ?>" required="required" class="form-control" disabled="disabled" tabindex="3" />
                         </div>
                         <div class=" col-12 col-sm-6">
                             <label for="" class="form-label">
                                 Referencia
                             </label>
-                            <p><input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
+                            <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
                         </div>
                     </div>
 

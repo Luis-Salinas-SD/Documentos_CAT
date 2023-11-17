@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" href="assets/styles/styles.css">
 <link rel="stylesheet" href="assets/styles/bootstrap.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
   * {
@@ -38,25 +39,24 @@
 
 <body>
 
-  <div class="login-box">
+  <div class="login-box shadow-lg">
 
     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
     <form action="login.php" method="POST" autocomplete="off" class="form">
 
-      <div class="panel-title">
-        <div class="text-center">
+      <div class="panel-title p-4">
+        <div class="text-center my-4">
           <img src="img/LogoD.png" width="200" />
         </div>
 
-        <div class="mb-3">
+        <div class="mb-4">
           <input id="usuario" type="text" class="form-control" name="usuario" value="" placeholder="Usuario" required>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-4">
           <input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" required>
         </div>
-
 
         <div class="form-group">
           <div class="col-sm-12 controls" align="center">
@@ -67,15 +67,15 @@
 
     </form>
 
-
-
-
-
-
   </div>
 
   <div id="particles-js"></div>
 
+  <script type="text/javascript">
+    function Mensaje() {
+      alert('Hola');
+    }
+  </script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="js/particles.min.js"></script>
   <script>
@@ -191,6 +191,7 @@
     });
   </script>
 </body>
+
 
 </html>
 

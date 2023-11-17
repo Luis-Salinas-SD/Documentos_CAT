@@ -15,3 +15,17 @@ listElements.forEach(listElement => {
 
     })
 });
+
+
+$(document).ready(function () {
+    $("a.external").on('click', function () {
+        url = $(this).attr("href");
+        window.open(url, '_blank');
+        return false;
+    });
+});
+
+
+function mensaje() {
+    console.log('Hola Mundo');
+}

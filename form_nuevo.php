@@ -25,7 +25,7 @@ if (@!$_SESSION['cvesp']) {
         <?php include_once('./nav-menu.php') ?>
         <div class="contenedor">
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
                     <h2>Agregar Nuevo Asunto</h2>
                 </div>
@@ -53,10 +53,10 @@ if (@!$_SESSION['cvesp']) {
                     <div class=" m-3">
                         <fieldset class="p-2">
 
-                            <div class="row text-primary">
+                            <div class="row txt-green">
                                 <h4>Asunto / Documento</h4>
                             </div>
-                            <hr class="text-primary mb-4">
+                            <hr class="txt-green mb-4">
 
                             <div class="row mb-4">
                                 <div class="col-12 col-sm-6 mb-3">
@@ -77,12 +77,12 @@ if (@!$_SESSION['cvesp']) {
                             </div>
 
 
-                            <div class="row text-primary mb-4">
-                                <h4>Detalle del Documento</h4>
+                            <div class="row mb-4">
+                                <h4 class="txt-green">Detalle del Documento</h4>
                             </div>
-                            <hr class="text-primary mb-4">
+                            <hr class="txt-green mb-4">
 
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="" class="form-label">
                                         Fecha de emisión del documento <span class="text-danger">*</span>
@@ -147,6 +147,9 @@ if (@!$_SESSION['cvesp']) {
     }
 
     ?>
+
+    <?php include_once('./templates/scripts.php') ?>
+
 </body>
 
 </html>
