@@ -30,7 +30,7 @@ if (@!$_SESSION['cvesp']) {
             <!-- Header -->
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Control de Documentos</h2>
+                    <h2>Control de documentos</h2>
                 </div>
             </div>
 
@@ -145,7 +145,7 @@ if (@!$_SESSION['cvesp']) {
                                                     if ($row['total'] >= 1) {
                                                     ?>
                                                         <td>
-                                                            <div class="alert alert-amarillo text-center">
+                                                            <div class="alert alert-amarillo text-center" style="width: 118px;">
                                                                 En proceso...
                                                             </div>
                                                         </td>

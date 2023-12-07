@@ -28,7 +28,7 @@
             <li class="list__item">
                 <div class="list__button">
                     <img src="assets/icons/search.svg" class="list__img">
-                    <a href="tabla_excel.php" class="nav__link">Buscar y Explorar</a>
+                    <a href="tabla_excel.php" class="nav__link">Buscar y Exportar</a>
                 </div>
             </li>
         <?php
@@ -50,7 +50,7 @@
             <li class="list__item">
                 <div class="list__button">
                     <img src="assets/icons/search.svg" class="list__img">
-                    <a href="tabla_excel_super.php" class="nav__link">Buscar y Explorar</a>
+                    <a href="tabla_excel_super.php" class="nav__link">Buscar y Exportar</a>
                 </div>
             </li>
             <li class="list__item">
@@ -78,7 +78,7 @@
             <li class="list__item">
                 <div class="list__button">
                     <img src="assets/icons/book.svg" class="list__img">
-                    <a href="./Manuales/analista.pdf" class="nav__link" target="_blank">Manual</a>
+                    <a href="./Manuales/analista-3.pdf" class="nav__link" target="_blank">Manual</a>
                 </div>
             </li>
         <?php
@@ -106,7 +106,7 @@
             <li class="list__item">
                 <div class="list__button">
                     <img src="assets/icons/book.svg" class="list__img">
-                    <a href="./Manuales/oficialia.pdf" class="nav__link" target="_blank">Manual</a>
+                    <a href="./Manuales/oficialia-4.pdf" class="nav__link" target="_blank">Manual</a>
                 </div>
             </li>
         <?php } ?>

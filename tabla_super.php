@@ -59,7 +59,7 @@ if (@!$_SESSION['cvesp']) {
                                 $idarea = $_SESSION['idarea'];
                                 $i = 1;
 
-                                $_pagi_sql = "SELECT distinct(d.idfolio), d.fecha_doc, d.docreferencia, d.remitente, d.descripcion FROM tbl_docs d, tbl_asignados a where  id_area=$idarea and fechaact >= '2019-01-01' and a.idfolio = d.Idfolio order by d.Idfolio desc";
+                                $_pagi_sql = "SELECT distinct(d.idfolio), d.fecha_doc, d.docreferencia, d.remitente, d.descripcion FROM tbl_docs d, tbl_asignados a where  id_area=$idarea and fechaact >= '2019-01-01' and a.idfolio = d.Idfolio order by d.Idfolio asc";
                                 //and fecha >='2019-01-01'
                                 $_pagi_result = $conexion->query($_pagi_sql);
                                 $numfilas = $_pagi_result->rowCount();

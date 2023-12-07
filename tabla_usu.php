@@ -27,9 +27,9 @@ if (@!$_SESSION['cvesp']) {
 		<div class="contenedor">
 
 			<!-- Header -->
-			<div class="card mb-5 m-2 shadow">
+			<div class="card mb-5 m-2 shadow bg-vino">
 				<div class="card-body">
-					<h3 class="text-secondary">Control de Documentos
+					<h3>Control de Documentos
 						<?php $date = date_create('2000');
 						echo date_format($date, 'Y'); ?>
 					</h3>

@@ -30,7 +30,7 @@ if (@!$_SESSION['cvesp']) {
             <!-- Header -->
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Control de Documentos</h2>
+                    <h2>Control de documentos</h2>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@ if (@!$_SESSION['cvesp']) {
 
                     <fieldset class="p-2">
                         <div class="row txt-green">
-                            <h4>Asunto / Documento</h4>
+                            <h4>Descripción del asunto</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -82,7 +82,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechaact" type="hidden" value="<?php echo $row['fechaact']; ?>" />
                             </div>
                             <div class="col-12 col-sm-6 mb-3">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente</label>
                                 <input name="remitente" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['remitente']; ?>" required="required" onpaste="return false" tabindex="2" />
                             </div>
 
@@ -90,7 +90,7 @@ if (@!$_SESSION['cvesp']) {
 
                         <div class="row txt-green">
                             <h4>
-                                Detalle del Documento
+                                Detalle del documento
                             </h4>
                         </div>
                         <hr class="txt-green mb-4">
@@ -101,7 +101,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechadoc" id="fechaid1" type="date" value="<?php echo $fecha = $row['fecha_doc']; ?>" required="required" class="form-control" tabindex="3" />
                             </div>
                             <div class="col-12 col-sm-6 mb-3">
-                                <label for="">Referencia</label>
+                                <label for="">Número de oficio</label>
                                 <input name="referencia" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['docreferencia']; ?>" required="required" onpaste="return false" tabindex="4" />
                             </div>
                         </div>
@@ -124,9 +124,8 @@ if (@!$_SESSION['cvesp']) {
 
                         <div class="col-12 mb-3">
                             <label for="archivo" class="form-label">Archivo</label>
-
-                            <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf">
-                            <span class="text-secondary"><b>NOTA: </b> El sistema solo acepta archivos en formato pdf que no excedan el tamaño máximo permitido (1 Mb )</span>
+                            <input type="file" class="form-control mb-2" id="archivo" name="archivo" accept="application/pdf">
+                            <span class="text-secondary"><b>NOTA: </b> El sistema solo acepta archivos en formato PDF que no excedan el tamaño máximo permitido (25MB)</span>
                             <br>
 
                             <?php

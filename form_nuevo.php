@@ -54,13 +54,13 @@ if (@!$_SESSION['cvesp']) {
                         <fieldset class="p-2">
 
                             <div class="row txt-green">
-                                <h4>Asunto / Documento</h4>
+                                <h4>Descripción del asunto</h4>
                             </div>
                             <hr class="txt-green mb-4">
 
                             <div class="row mb-4">
                                 <div class="col-12 col-sm-6 mb-3">
-                                    <label for="" class="form-label">Remitente <span class="text-danger">*</span></label>
+                                    <label for="" class="form-label">Nombre del remitente <span class="text-danger">*</span></label>
                                     <input name="remitente" class="form-control text-secondary" type="text" onKeyUp="activar1()" value="" required="required" tabindex="2" />
                                 </div>
                                 <div class="col-12 col-sm-6 mb-3">
@@ -90,7 +90,7 @@ if (@!$_SESSION['cvesp']) {
                                     <input id="fechaid1" name="fechadoc" type="date" value=" " required="required" class="form-control" tabindex="3" />
                                 </div>
                                 <div class="col-12 col-sm-6 mb-3">
-                                    <label for="" class="form-label">Referencia <span class="text-danger">*</span></label>
+                                    <label for="" class="form-label">Número de oficio <span class="text-danger">*</span></label>
                                     <input name="referencia" class="form-control text-secondary" type="text" onKeyUp="activar1()" value="" required="required" tabindex="4" />
                                 </div>
                             </div>
@@ -104,8 +104,8 @@ if (@!$_SESSION['cvesp']) {
 
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    <label for="" class="form-label">Observaciones <span class="text-danger">*</span></label>
-                                    <textarea name="observacion" class="form-control" type="text" onKeyUp="activar1()" value="" required tabindex="7"></textarea>
+                                    <label for="" class="form-label">Observaciones</label>
+                                    <textarea name="observacion" class="form-control" type="text" onKeyUp="activar1()" value="" tabindex="7"></textarea>
                                     <input name="usu" type="hidden" value="<?php echo $_SESSION['cvesp']; ?>" />
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ if (@!$_SESSION['cvesp']) {
                                     <label for="archivo" class="form-label">Archivo</label>
                                     <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf">
                                     <span class="text-secondary">
-                                        <b>NOTA</b>:El sistema solo acepta archivos en formato pdf que no excedan el tamaño máximo permitido (25 Mb )
+                                        <b>NOTA:</b> El sistema solo acepta archivos en formato PDF que no excedan el tamaño máximo permitido (25 MB )
                                     </span>
                                 </div>
                             </div>

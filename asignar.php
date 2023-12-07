@@ -31,7 +31,7 @@ $idarea = $_SESSION['idarea'];
 ?>
 
 <div class="col-12 text-center text-secondary">
-  <h4>Servidores Públicos Asignados</h4>
+  <h4>Servidores públicos asignados</h4>
 </div>
 <div class="col-12 text-end">
   <!-- Button trigger modal -->

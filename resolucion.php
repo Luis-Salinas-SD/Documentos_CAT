@@ -38,7 +38,7 @@ if (@!$_SESSION['cvesp']) {
                 $idfolio = $_GET['idfolio'];
                 ?>
                 <div class="row">
-                    <div class="col-12 text-end">
+                    <div class="col-12 text-end p-2">
                         <div class="m-2">
                             <form id="ver" action="tabla_admon.php" method="post">
                                 <button type="submit" class="btn btn-secondary" title="Ver Tabla" id="opcion" value="Regresar">
@@ -76,13 +76,13 @@ if (@!$_SESSION['cvesp']) {
                     </div>
                     <hr class="txt-green mb-4">
 
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-sm-4">
-                            <label for="" class="form-label">Tipo de Documento de la resolución</label>
+                            <label for="" class="form-label">Tipo de documento de la resolución</label>
                             <input name="tipo_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required onpaste="return false" tabindex="1">
                         </div>
                         <div class="col-sm-4">
-                            <label for="" class="form-label">Número de Documento de la resolución</label>
+                            <label for="" class="form-label">Número de documento de la resolución</label>
                             <input name="num_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="2">
                         </div>
                         <div class="col-sm-4">
@@ -104,7 +104,7 @@ if (@!$_SESSION['cvesp']) {
                     </div>
 
                     <div class="row txt-green">
-                        <h4>Asunto / Documento</h4>
+                        <h4>Descripción del documento</h4>
                     </div>
                     <hr class="txt-green mb-4">
 
@@ -120,7 +120,7 @@ if (@!$_SESSION['cvesp']) {
                             <input name="fechares" type="hidden" value="20<?php echo $fecha; ?>" />
                         </div>
                         <div class="col-12 col-sm-7">
-                            <label class="form-label">Remitente</label>
+                            <label class="form-label">Nombre del remitente</label>
                             <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>">
                         </div>
                     </div>
@@ -139,7 +139,7 @@ if (@!$_SESSION['cvesp']) {
                         </div>
                         <div class=" col-12 col-sm-6">
                             <label for="" class="form-label">
-                                Referencia
+                                Número de oficio
                             </label>
                             <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
                         </div>
@@ -190,7 +190,7 @@ if (@!$_SESSION['cvesp']) {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>";
+                                                </div>";
                                     }
                                 }
                             }

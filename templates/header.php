@@ -1,3 +1,5 @@
+<!-- Favicon -->
+<link rel="icon" href="assets/icons/favicon-main.png"/>
 <!-- CSS - LS -->
 <link rel="stylesheet" href="assets/styles/bootstrap.css" />
 <link rel="stylesheet" href="assets/styles/styles.css">

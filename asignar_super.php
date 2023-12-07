@@ -1,4 +1,4 @@
-<script language="javascript">
+<!-- <script language="javascript">
   $(document).ready(function() {
     $("#area").on('change', function() {
       $("#area option:selected").each(function() {
@@ -10,6 +10,22 @@
         });
       });
     });
+    $("#usuarios").on('change', function() {
+      $("#usuarios option:selected").each(function() {
+        elegido1 = $(this).val();
+        $.post("./conceptos.php", {
+          elegido1: elegido1
+        }, function(data) {
+          $("#concepto").html(data);
+        });
+      });
+    });
+  });
+</script> -->
+
+<script language="javascript">
+  $(document).ready(function() {
+
     $("#usuarios").on('change', function() {
       $("#usuarios option:selected").each(function() {
         elegido1 = $(this).val();
@@ -98,7 +114,7 @@ $idarea = $_SESSION['idarea'];
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div id="tabla"></div>
+<div id="tabla" class="col-12 p-2"></div>
 
 
 
@@ -106,13 +122,16 @@ $idarea = $_SESSION['idarea'];
 <script>
   function loadTabla() {
     var idfolio = "<?php echo $idfolio; ?>";
+    var idarea = "<?php echo $idarea; ?>";
     //document.write("idfolio = " + idfolio);
     $('#editModal').modal('hide');
-    $.get("./tabla.php", {
-      folio: idfolio
+    $.get("./super_tabla.php", {
+      folio: idfolio,
+      idarea: idarea
     }, function(data) {
       $("#tabla").html(data);
     })
+    //{folio :  idfolio} "&usuarios="+sp
   }
 
   $("#buscar").submit(function(e) {

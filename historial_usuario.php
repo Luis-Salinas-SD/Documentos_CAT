@@ -28,9 +28,9 @@ if (@!$_SESSION['cvesp']) {
         <div class="contenedor">
 
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2 class="text-secondary">Búsqueda y Exportación a:</h2>
+                    <h2>Búsqueda y Exportación a:</h2>
                 </div>
             </div>
             <div class="card mx-2 mt-5">

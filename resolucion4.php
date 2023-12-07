@@ -10,198 +10,172 @@ if (@!$_SESSION['cvesp']) {
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/estilo_index.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-  <title>CONTROL DE DOCUMENTOS</title>
-  </head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- CSS y Scripts -->
+    <?php include_once('./templates/header.php') ?>
+    <title>CONTROL DE DOCUMENTOS</title>
+</head>
 
 <body>
-<?php
-$tipo=$_SESSION['tipo_usuario'];
-    if($tipo==3){
-?> 
-        <header>
-            
-		</header>
-        <p>
-        <table width="980" class="ubica1">
-					<td width="479" align="left" ><a>  Bienvenido <strong><?php echo $_SESSION['nombre']; ?></strong></a> </td>
+    <?php
+    $tipo = $_SESSION['tipo_usuario'];
+    if ($tipo == 3) {
+    ?>
 
-					<td width="105" align="right"><a class="external" href="./Manuales/analista.pdf">
-                     <input id="ayuda" type="image" src="./img/help.png" alt ="Ayuda" title="Ayuda">
-                     </a>
-					 </td>
-					 
-	  				<td width="105" align="right"><a href="desconectar.php"> Cerrar Sesion </a></td>
-   				 </table>
+        <!--! Nav Menu  -->
+        <?php include_once('./nav-menu.php') ?>
 
-<div class="container">
-<div class="header row">
-  			<div class="navegacion col">
- 				
-  				<nav class="navbar navbar-default" role="navigation">
-  				
-  				<ul id="button">
-		
-					 
-                  <li><a href="tabla_usu.php">REGRESAR A TABLA</a></li>
-                  <li><a href="historial_usuario.php">HISTORIAL</a></li>
-							 
-					</ul>
-			</nav>
-			</div>
-			</div>
-        
-            <div class="row">
-            <div class="col-lg-12">   
 
-            <div class="center" style="text-align: center;"> 
-                     <h2>
-                          
-                             CONTROL DE DOCUMENTOS 
-                        
-                    </h2>
+        <div class="contenedor">
+            <div class="card m-2 shadow bg-vino">
+                <div class="card-body">
+                    <h2>Control de Documentos</h2>
+                </div>
             </div>
-           <?php 
-            $idfolio =$_REQUEST['idfolio'] ;
-             ?>	  
-			 <?php 
-			$i = 1;
-            require("./bd/conndb1.php");
-            $conexion = getConn();
-            $usu = $_SESSION['cvesp'];
-
-            $sql = "SELECT * FROM tbl_docs WHERE tbl_docs.Idfolio=$idfolio ";
-            $result = $conexion->query($sql);
-            $row = $result->fetch(PDO::FETCH_ASSOC);
-
-            ?>
-			<form  action="crearpt.php" method="post" class="form-control"  enctype="multipart/form-data" >
-                <input  type="hidden"  name="idfolio"  value="<?php echo $idfolio; ?>" >
 
 
-	        <fieldset class="fieldset1">
-            <legend class="legend1 estilo4">
-            <p>Asunto / Documento </p> </legend>
-    		   <div class="row">
-				<div class="col-sm-4">
-			   Fecha
- 				
-            <input name="fechaact"  disabled="disabled" type="text"  value="<?php echo $fecha=$row['fechaact']; ?>"  class="form-control"/>
-   			</div> 
-			<div class="col-sm-8">
- 			 Remitente
- 			 <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>" tabindex="1"/>
-    </div> 
-	</div> 
-    
-            <fieldset class="fieldset1">
-            <legend class="legend1 estilo4">
-            <p>Detalle del Documento</p> </legend>
-			<div class="row">
-				<div class="col-sm-4">
-  			Fecha de emisión del documento
-  			<input  name="fechadoc"  disabled="disabled" type="text"  value="<?php  echo $fecha = $row['fecha_doc']; ?>"  class="form-control"/>
- 			</div> 
-			<div class="col-sm-4">
-			Referencia
-			<input name="referencia" disabled="disabled" class="form-control" type="text"  value="<?php echo $row['docreferencia']; ?>"  tabindex="4"/> 
-			</div> 
-			
-			</div> 	
-			<p>Descripción</p>
-			<p><textarea name="asunto"  class="form-control" disabled="disabled" value="" > <?php echo $row['descripcion']; ?></textarea>
-				
-			<p>Observaciones</p>
-			<p><input name="observacion" disabled="disabled" class="form-control" type="text"value="<?php echo $row['observacion']; ?>" tabindex="4">
-
-        </fieldset>
-	
-        <?php include ("tabla_resolucion.php"); ?>
-
- 		<input name="usu" type="hidden" value="<?php echo $_SESSION['cvesp'];?>" />
-		
-         <div class="col-sm-10">
-				<!--	<input type="file" class="form-control" id="archivo" name="archivo">-->
-						
-						<?php 
-							$path = "files/".$idfolio;
-							if(file_exists($path)){
-								$directorio = opendir($path);
-								while ($archivo = readdir($directorio))
-								{
-									if (!is_dir($archivo)){
-                                        
-                                        echo "$archivo";
-										echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='120%' frameborder='0' height='550'></iframe></div>";
-									}
-								}
-							}
-							
-						?>
-						
-					</div>
+            <div class="card mt-5 mx-2">
+                <?php
+                $idfolio = $_REQUEST['idfolio'];
+                ?>
+                <?php
+                $i = 1;
+                require("./bd/conndb1.php");
+                $conexion = getConn();
+                $usu = $_SESSION['cvesp'];
+                $sql = "SELECT * FROM tbl_docs WHERE tbl_docs.Idfolio=$idfolio ";
+                $result = $conexion->query($sql);
+                $row = $result->fetch(PDO::FETCH_ASSOC);
 
 
+                ?>
+
+                <div class="row p-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <form id="ver" action="tabla_super.php" method="post">
+                            <button type="submit" class="btn btn-secondary" id="opcion">
+                                <img src="./assets/icons/back.svg" alt="" srcset="">
+                                Atrás
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <form action="crearpt.php" method="post" enctype="multipart/form-data" class="p-3">
+                    <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">
+
+                    <fieldset class="p-2">
+                        <div class="row">
+                            <h4 class="txt-green">Asunto / Documento</h4>
+                        </div>
+                        <hr class="txt-green mb-4">
+
+                        <div class="row mb-4">
+                            <div class=" col-12 col-sm-6">
+                                <label for="" class="form-label">Fecha</label>
+                                <input name="fechaact" disabled="disabled" type="text" value="<?php echo $fecha = $row['fechaact']; ?>" class="form-control" />
+                            </div>
+                            <div class=" col-12 col-sm-6">
+                                <label for="" class="form-label">Remitente</label>
+                                <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>" tabindex="1" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <h4 class="txt-green">Detalle del Documento</h4>
+                        </div>
+                        <hr class="txt-green mb-4">
+
+                        <div class="row mb-4">
+                            <div class="col-12 col-md-6">
+                                <label for="" class="form-label">Fecha de emisión del documento</label>
+                                <input name="fechadoc" disabled="disabled" type="text" value="<?php echo $fecha = $row['fecha_doc']; ?>" class="form-control" />
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="" class="form-label">Referencia</label>
+                                <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>" tabindex="4" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <label for="">Descripción</label>
+                                <textarea name="asunto" class="form-control" disabled="disabled" value=""> <?php echo $row['descripcion']; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <label for="">Observaciones</label>
+                                <input name="observacion" disabled="disabled" class="form-control" type="text" value="<?php echo $row['observacion']; ?>" tabindex="4">
+                            </div>
+                        </div>
 
 
+                        <?php include("tabla_resolucion.php"); ?>
+
+                        <input name="usu" type="hidden" value="<?php echo $_SESSION['cvesp']; ?>" />
+
+                        <div class="col-sm-12">
+                            <!--	<input type="file" class="form-control" id="archivo" name="archivo">-->
+
+                            <?php
+                            $path = "files/" . $idfolio;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+
+                                        echo "<button type='button' class='btn btn-danger m-1' data-bs-toggle='modal' data-bs-target='#ident_$i' data-toggle='tooltip' data-placement='top' title='$archivo'><img src='./assets/icons/pdf.svg'> </button>";
+                                        //echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550'></iframe></div>";
+                                        echo "<div class='modal fade' id='ident_$i' tabindex='-1' aria-labelledby='$archivo' aria-hidden='true'>
+                                                <div class='modal-dialog modal-dialog-centered modal-xl'>
+                                                    <div class='modal-content'>
+                                                        <div class='modal-header'>
+                                                            <h5 class='modal-title text-capitalize' id='exampleModalLabel'>$archivo</h5>
+                                                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                        </div>
+                                                        <div class='modal-body'>
+                                                            <div class='center'><iframe src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550'></iframe></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>";
+                                    }
+                                }
+                            }
+
+                            ?>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-4">
+                            </div>
+                </form>
+
+            </div>
+
+        </div>
 
 
+    <?php
+    } elseif ($tipo == 1) {
 
-	         	
-               	<div class="row">
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-4">
-					</div> 
-					</form >
-					
-                     <div class="col-sm-4">
-					 <form id="ver" action="tabla_usu.php" method="post">
-						<input type="submit" class="tbl" title="Ver Tabla" id="opcion" value=" "/> 
-					</form>
-					</div> 
-   				</div> 
-       
-            
-                   </div>
-             </div>    
-         
-       
-   
-    <script type="text/javascript">
-                    $(document).ready(function() {
-                        $("form.external").on('click', function() {
-                            url = $(this).attr("action");
-                            window.open(url, '_blank');
-                            return false;
-                        });
-                    });
-                </script>
-	 </div>
+        header("Location:tabla_admon.php");
+    } elseif ($tipo == 2) {
 
-	 <?php
-  }elseif($tipo==1){
-
-    header("Location:tabla_admon.php");
-
-  }elseif($tipo==2){
-
-    header("Location:tabla_super.php");
-
-      }elseif($tipo==4){
+        header("Location:tabla_super.php");
+    } elseif ($tipo == 4) {
 
         header("Location:tabla_oficialia.php");
+    } else {
+        header("Location:index.php");
+    }
+    ?>
 
-  }else{
-      header("Location:index.php");
-
-  }
-
-?> 
+    <?php include_once('./templates/scripts.php') ?>
 </body>
+
 </html>

@@ -23,10 +23,10 @@
     if ($row['total'] >= 1) {
     ?>
 
-        <td class="pt-3">
-            <span class="alert alert-amarillo">
+        <td class="pt-3 text-center">
+            <div class="alert alert-amarillo" style="width: 100px">
                 En proceso...
-            </span>
+            </div>
         </td>
 
         <td class="center d-flex">
@@ -61,7 +61,7 @@
             //$numfilas = $query->rowCount();
             $row = $resul->fetch(PDO::FETCH_ASSOC); //false
 
-            $row = $resul->fetch(PDO::FETCH_ASSOC);
+            //$row = $resul->fetch(PDO::FETCH_ASSOC);
             $usuarios = $row['cvesp'];
             if ($usuarios <> $usu) {
             ?>
@@ -86,7 +86,7 @@
     } else if ($row['total'] == 0) {
     ?>
 
-        <td class="center">
+        <td class="text-center">
             <span class="alert alert-verde" style="width: 104px;">
                 Finalizado
             </span>
@@ -103,6 +103,5 @@
 
     <?php
     }
-    //}
     ?>
 </tr>

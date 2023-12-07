@@ -165,8 +165,9 @@ if (@!$_SESSION['cvesp']) {
             </form>
         </div>
 
-        <div class="col-12 card mt-4 mx-2 p-2">
+        <div class="col-12 card mt-4 mx-2 p-3">
             <?php include('asignar_super.php') ?>
+
         </div>
 
     </div>

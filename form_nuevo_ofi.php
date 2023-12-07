@@ -29,7 +29,7 @@ if (@!$_SESSION['cvesp']) {
             <!-- Header -->
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Control de Documentos</h2>
+                    <h2>Agregar asunto</h2>
                 </div>
             </div>
 
@@ -51,14 +51,14 @@ if (@!$_SESSION['cvesp']) {
                     ?>
                     <form action="guardar.php" method="post" enctype="multipart/form-data">
                         <div class="row txt-green">
-                            <h4>Asunto / Documento</h4>
+                            <h4>Descripción del asunto</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
                         <div class="row mb-3">
                             <div class="col-12 col-sm-6">
                                 <input name="idfolio" type="hidden" value="<?php echo $idfolio; ?>" />
-                                <label for="" class="form-label">Fecha</label>
+                                <label for="" class="form-label">Fecha <span class="text-danger">*</span></label>
                                 <?php
                                 date_default_timezone_set('America/Mexico_City');
                                 $fecha = date('y/m/d');
@@ -68,7 +68,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechaact" type="hidden" value="<?php echo $fecha; ?>" required="required" />
                             </div>
                             <div class="col-12 col-sm-6">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente <span class="text-danger">*</span></label>
                                 <input name="remitente" class="form-control" type="text" onKeyUp="activar1()" value="" required="required" tabindex="2" />
                             </div>
                         </div>
@@ -79,18 +79,18 @@ if (@!$_SESSION['cvesp']) {
 
                         <div class="row mb-3">
                             <div class="col-12 col-sm-6">
-                                <label for="" class="form-label">Fecha de emisión del documento</label>
+                                <label for="" class="form-label">Fecha de emisión del documento <span class="text-danger">*</span></label>
                                 <input id="fechaid1" name="fechadoc" type="date" value=" " required="required" class="form-control" tabindex="3" />
 
                             </div>
                             <div class="col-12 col-sm-6">
-                                <label for="" class="form-label">Referencia</label>
+                                <label for="" class="form-label">Número de referencia <span class="text-danger">*</span></label>
                                 <input name="referencia" class="form-control" type="text" onKeyUp="activar1()" value="" required="required" tabindex="4" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-12">
-                                <label for="" class="form-label">Descripción</label>
+                                <label for="" class="form-label">Descripción <span class="text-danger">*</span></label>
                                 <textarea name="asunto" class="form-control" onKeyUp="activar1()" required tabindex="6"></textarea>
                             </div>
                         </div>
@@ -105,17 +105,16 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="usu" type="hidden" value="<?php echo $_SESSION['cvesp']; ?>" />
                                 <label for="archivo" class="form-label">Archivo</label>
                                 <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf">
-                                <span class="text-secondary my-1">NOTA:El sistema solo acepta archivos en formato pdf que no excedan el tamaño máximo permitido (25 Mb )</span>
+                                <span class="text-secondary my-1"><b>NOTA:</b> El sistema solo acepta archivos en formato PDF que no excedan el tamaño máximo permitido (25MB).</span>
                             </div>
 
                         </div>
 
                         <div class="col-12 text-center">
                             <button type="submit" class="btn btn-success">
-                                GUARDAR
+                                Guardar
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>

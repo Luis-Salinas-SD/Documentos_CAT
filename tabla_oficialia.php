@@ -12,7 +12,7 @@ if (@!$_SESSION['cvesp']) {
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <!-- CSS y Scripts -->
     <?php include_once('./templates/header.php') ?>
-    <title>Control de Documentos</title>
+    <title>Control de documentos</title>
 </head>
 
 <body>
@@ -26,9 +26,9 @@ if (@!$_SESSION['cvesp']) {
         <div class="contenedor">
 
             <!-- Header -->
-            <div class="card m-2 shadow">
+            <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2 class="text-secondary">Control de Documentos</h2>
+                    <h2>Control de documentos</h2>
                 </div>
             </div>
 
@@ -38,13 +38,13 @@ if (@!$_SESSION['cvesp']) {
                     <div class="table-responsive m-3 p-3">
                         <table class="table table-bordered print-friendly hover" id="oficialia">
                             <thead style="text-align: center;">
-                                <tr>
-                                    <th class="center"> No.</th>
-                                    <th class="center"> Fecha del Documento</th>
-                                    <th class="center"> Numero de Oficio </th>
-                                    <th class="center"> Nombre del remitente</th>
-                                    <th class="center"> Concepto</th>
-                                    <th class="center"> Archivo</th>
+                                <tr class="text-center">
+                                    <th> No.</th>
+                                    <th> Fecha del documento</th>
+                                    <th> Número de oficio </th>
+                                    <th> Nombre del remitente</th>
+                                    <th> Concepto</th>
+                                    <th> Archivo</th>
 
 
                                 </tr>
@@ -84,8 +84,8 @@ if (@!$_SESSION['cvesp']) {
                                 ?>
                                             <tr>
 
-                                                <td class="center">
-                                                    <?php echo $i; ?>
+                                                <td class="text-center">
+                                                    <?php echo $row['Idfolio']; ?>
                                                 </td>
 
                                                 <td class="center">
@@ -100,7 +100,7 @@ if (@!$_SESSION['cvesp']) {
                                                 <td class="center">
                                                     <?php echo $row['descripcion']; ?>
                                                 </td>
-                                                <td class="center">
+                                                <td class="text-center">
 
                                                     <form name="resolucion" method="post" action="./ver_archivo.php">
                                                         <input type="hidden" name="idfolio" value="<?php echo $idfolio; ?>">

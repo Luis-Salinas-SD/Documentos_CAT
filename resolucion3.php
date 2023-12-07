@@ -90,7 +90,6 @@ if (@!$_SESSION['cvesp']) {
                             <div class="col-12 col-md-6">
                                 <label for="" class="form-label">Referencia</label>
                                 <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>" tabindex="4" />
-
                             </div>
                         </div>
 

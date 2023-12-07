@@ -50,7 +50,7 @@ let excel_icon = `
 
 
 const optionsData = {
-    order: [1, 'desc'],
+    order: [0, 'desc'],
     "language": {
         "lengthMenu": 'Mostrar <select>' +
             '<option value="2">2</option>' +
@@ -62,7 +62,7 @@ const optionsData = {
             '</select> registros por página.',
         "zeroRecords": "No existen registros con esos parámetros.",
         "info": "Página _PAGE_ de _PAGES_",
-        "infoEmpty": "No existen cédulas.",
+        "infoEmpty": "No existen registros.",
         "infoFiltered": "(filtrado para un máximo de _MAX_ registros)",
         "loadingRecords": "Cargando registros...",
         "processing": "Procesando registros...",
@@ -104,13 +104,14 @@ const optionsData = {
 
 $(document).ready(function () {
     $('#prueba').DataTable(optionsData);
-    $('#busquedaExport').DataTable(optionsData);
-    $('#oficialia').DataTable(optionsData);
     $('#dosTable').DataTable(optionsData);
+    $('#oficialia').DataTable(optionsData);
+    $('#busquedaExport').DataTable(optionsData);
 
 })
 
 const optionsData2 = {
+    order: [0, 'desc'],
     "language": {
         "lengthMenu": 'Mostrar <select>' +
             '<option value="2">2</option>' +
@@ -122,7 +123,7 @@ const optionsData2 = {
             '</select> registros por página.',
         "zeroRecords": "No existen registros con esos parámetros.",
         "info": "Página _PAGE_ de _PAGES_",
-        "infoEmpty": "No existen cédulas.",
+        "infoEmpty": "No existen registros.",
         "infoFiltered": "(filtrado para un máximo de _MAX_ registros)",
         "loadingRecords": "Cargando registros...",
         "processing": "Procesando registros...",
@@ -140,4 +141,36 @@ const optionsData2 = {
 
 $(document).ready(function () {
     $('#catDocs').DataTable(optionsData2);
+})
+
+const optionsData3 = {
+    order: [0, 'asc'],
+    "language": {
+        "lengthMenu": 'Mostrar <select>' +
+            '<option value="2">2</option>' +
+            '<option value="5">5</option>' +
+            '<option value="10">10</option>' +
+            '<option value="20">20</option>' +
+            '<option value="30">30</option>' +
+            '<option value="-1">Todas</option>' +
+            '</select> registros por página.',
+        "zeroRecords": "No existen registros con esos parámetros.",
+        "info": "Página _PAGE_ de _PAGES_",
+        "infoEmpty": "No existen registros.",
+        "infoFiltered": "(filtrado para un máximo de _MAX_ registros)",
+        "loadingRecords": "Cargando registros...",
+        "processing": "Procesando registros...",
+        "search": "Buscar en la tabla: ",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": ">",
+            "previous": "<"
+        }
+    },
+    responsive: true,
+
+}
+
+$(document).ready(function () {
 })

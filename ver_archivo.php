@@ -12,7 +12,7 @@ if (@!$_SESSION['cvesp']) {
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <!-- CSS y Scripts -->
     <?php include_once('./templates/header.php') ?>
-    <title>EMISION DE DOCUMENTOS</title>
+    <title>Emision de documentos</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@ if (@!$_SESSION['cvesp']) {
             <!-- Header -->
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Control de Documentos</h2>
+                    <h2>Control de documentos</h2>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@ if (@!$_SESSION['cvesp']) {
 
                     <fieldset>
                         <div class="row txt-green">
-                            <h4>Asunto / Documento</h4>
+                            <h4>Descripción del documento</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -76,7 +76,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechaact" type="hidden" value="<?php echo $row['fechaact']; ?>" />
                             </div>
                             <div class="col-12 col-sm-6">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente</label>
                                 <p><input name="remitente" class="form-control" type="text" disabled="disabled" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['remitente']; ?>" required="required" onpaste="return false" tabindex="2" />
                             </div>
                         </div>
@@ -92,7 +92,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechadoc" id="fechaid1" type="date" disabled="disabled" value="<?php echo $fecha = $row['fecha_doc']; ?>" required="required" class="form-control" tabindex="3" />
                             </div>
                             <div class="col-12 col-sm-6">
-                                <label for="" class="form-label">Referencia</label>
+                                <label for="" class="form-label">Número de referencia</label>
                                 <input name="referencia" class="form-control" disabled="disabled" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['docreferencia']; ?>" required="required" onpaste="return false" tabindex="4" />
                             </div>
                         </div>

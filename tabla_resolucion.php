@@ -3,11 +3,11 @@
         <thead class="h-verde">
             <tr>
                 <th>Área</th>
-                <th>Servidor Público</th>
+                <th>Servidor público</th>
                 <th>Concepto</th>
-                <th>Tipo de Resolución</th>
-                <th>Número de Resolución</th>
-                <th>Fecha de Resolución</th>
+                <th>Tipo de resolución</th>
+                <th>Número de resolución</th>
+                <th>Fecha de resolución</th>
                 <th>Notas</th>
 
             </tr>
@@ -15,7 +15,6 @@
         <tbody>
 
             <?php
-
             $sql = "SELECT a.idreg as idasigna, s.area as area,  u.cvesp as cvesp,
             u.nombre as sp, c.tarea as concep, r.tipodocref , r.nodoc, r.fecha, r.nota as nota from  tbl_asignados a, tbl_usuarios u, cat_areas s, cat_conceptos c,tbl_resolucion r
             where u.id_usuario = a.cvesp
@@ -30,7 +29,6 @@
                 $usuario = $row['cvesp'];
             ?>
                 <tr>
-
                     <td>
                         <?php echo $row['area']; ?>
                     </td>
@@ -52,11 +50,8 @@
                     <td>
                         <?php echo $row['nota']; ?>
                     </td>
-
                 </tr>
                 <?php $cvesp = $row['cvesp']; ?>
-
-
 
             <?php
             } ?>

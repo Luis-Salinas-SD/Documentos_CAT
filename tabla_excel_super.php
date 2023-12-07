@@ -36,11 +36,11 @@ if (@!$_SESSION['cvesp']) {
                     <table class="table table-bordered print-friendly hover" id="dosTable">
                         <thead>
                             <tr>
-                                <th>Fecha</th>
+                                <th style="width: 65px;">Fecha</th>
                                 <th>Documento</th>
                                 <th>Emitido</th>
                                 <th>Descripción</th>
-                                <th>Turnado</th>
+                                <th style="width: 180px;">Turnado</th>
                                 <th>Estatus</th>
                             </tr>
                         </thead>
@@ -103,7 +103,7 @@ if (@!$_SESSION['cvesp']) {
 
 
                                                 <td class="center">
-                                                    <div class="alert alert-amarillos" style="width: 108px;">
+                                                    <div class="alert alert-amarillo" style="width: 108px;">
                                                         En proceso...
                                                     </div>
                                                 </td>
