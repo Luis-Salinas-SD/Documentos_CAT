@@ -50,7 +50,7 @@ if (@!$_SESSION['cvesp']) {
                             </form>
                         </div>
                         <div class="m-1">
-                            <a href="historial_usuario.php" class="btn btn-vino">HISTORIAL</a>
+                            <a href="historial_usuario.php" class="btn btn-vino">Historial</a>
                         </div>
                     </div>
                 </div>
@@ -81,11 +81,11 @@ if (@!$_SESSION['cvesp']) {
 
                         <div class="row mb-2">
                             <div class="col-12 col-sm-4">
-                                <label for="" class="form-label">Tipo de Documento de la resolución</label>
+                                <label for="" class="form-label">Tipo de documento de la resolución</label>
                                 <input name="tipo_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="1">
                             </div>
                             <div class="col-12 col-sm-4">
-                                <label for="" class="form-label">Número de Documento de la resolución</label>
+                                <label for="" class="form-label">Número de documento de la resolución</label>
                                 <input name="num_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="2">
                             </div>
                             <div class="col-12 col-sm-4">
@@ -110,7 +110,7 @@ if (@!$_SESSION['cvesp']) {
 
                     <fieldset class="p-2">
                         <div class="row txt-green">
-                            <h4>Asunto / Documento</h4>
+                            <h4>Descripción del asunto</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -120,7 +120,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechaact" id="fechaid1" disabled="disabled" type="text" value="<?php echo $fecha = $row['fechaact']; ?>" class="form-control" />
                             </div>
                             <div class="col-12 col-sm-9">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente</label>
                                 <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>">
                             </div>
                         </div>
@@ -128,7 +128,7 @@ if (@!$_SESSION['cvesp']) {
 
                     <fieldset class="p-2">
                         <div class="row txt-green">
-                            <h4>Detalle del Documento</h4>
+                            <h4>Detalle del documento</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -138,7 +138,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechadoc" id="fechaid1" disabled="disabled" type="text" value="<?php echo $fecha = $row['fecha_doc']; ?>" class="form-control" />
                             </div>
                             <div class="col-12 col-sm-9">
-                                <label class="form-label">Referencia</label>
+                                <label class="form-label">Número de oficio</label>
                                 <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>">
                             </div>
                         </div>

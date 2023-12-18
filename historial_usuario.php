@@ -30,7 +30,7 @@ if (@!$_SESSION['cvesp']) {
             <!-- Header -->
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Búsqueda y Exportación a:</h2>
+                    <h2>Búsqueda y exportación a:</h2>
                 </div>
             </div>
             <div class="card mx-2 mt-5">
@@ -52,12 +52,12 @@ if (@!$_SESSION['cvesp']) {
                     <div class="table-responsive m-3 p-3">
                         <table class="table table-bordered print-friendly hover" id="busquedaExport">
                             <thead>
-                                <th class="text-center">FECHA</th>
-                                <th class="text-center">DOCUMENTO</th>
-                                <th class="text-center">EMITIDO</th>
-                                <th class="text-center">DESCRIPCIÓN</th>
-                                <th class="text-center">TURNADO</th>
-                                <th class="text-center">ESTATUS</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Documento</th>
+                                <th class="text-center">Emitido</th>
+                                <th class="text-center">Descripción</th>
+                                <th class="text-center">Turnado</th>
+                                <th class="text-center">Estatus</th>
                             </thead>
                             <tbody>
 
@@ -83,7 +83,7 @@ if (@!$_SESSION['cvesp']) {
                                 $_pagi_result = $conexion->query($_pagi_sql);
                                 $numfilas = $_pagi_result->rowCount();
                                 if ($numfilas == 0) {
-                                    echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
+                                    echo '<script>msmNoRegisters()</script>';
                                 ?>
 
                                     <?php

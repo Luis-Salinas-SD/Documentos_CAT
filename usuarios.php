@@ -2,15 +2,30 @@
 
 require('./bd/conexion.php');
 
-$html = " ";
-$elegido= $_POST["elegido"];
- $sql1 = "SELECT * FROM tbl_usuarios, cat_areas where cat_areas.Id=$elegido and cat_areas.Id=tbl_usuarios.idarea";
-        $resultado = $dbh->query($sql1);
-        while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-            $cvesp= $row['id_usuario'];
-            $nombre= $row['nombre'];
-        $html = "<option name='turnado' value= $cvesp>  $nombre </option>";
+$json = file_get_contents('php://input');
+$idArea = json_decode($json, true);
 
-echo $html;
+$areas = array();
+
+if ($idArea == 1) {
+    //$sql1 = "SELECT * FROM tbl_usuarios WHERE idarea=$idArea OR idarea=3;";
+    $sql1 = "SELECT * FROM tbl_usuarios WHERE id_usuario !=12 AND id_usuario != 5 AND idarea=1 OR idarea=3;";
+    $resultado = $dbh->query($sql1);
+} else {
+    $sql1 = "SELECT * FROM tbl_usuarios where idarea=$idArea;";
+    $resultado = $dbh->query($sql1);
 }
-?>
+
+
+
+while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+    $cvesp = $row['id_usuario'];
+    $nombre = $row['nombre'];
+
+    $areas[] = array(
+        'id_usuario' => $cvesp,
+        'nombre' => $nombre
+    );
+}
+
+echo json_encode($areas);

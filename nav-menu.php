@@ -109,6 +109,26 @@
                     <a href="./Manuales/oficialia-4.pdf" class="nav__link" target="_blank">Manual</a>
                 </div>
             </li>
+        <?php } else if ($tipo == 5) { ?>
+            <li class="list__item">
+                <div class="list__button mb-3">
+                    <span class="text-secondary p-2">
+                        <b><?php echo $_SESSION['nombre']; ?></b>
+                    </span>
+                </div>
+            </li>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="assets/icons/home.svg" class="list__img">
+                    <a href="tabla_super-div.php" class="nav__link">Inicio</a>
+                </div>
+            </li>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="assets/icons/book.svg" class="list__img">
+                    <a href="./Manuales/oficialia-4.pdf" class="nav__link" target="_blank">Manual</a>
+                </div>
+            </li>
         <?php } ?>
 
         <li class="list__item">
@@ -130,5 +150,5 @@
 </nav>
 
 <div class="mostrar pt-1 pointer shadow" id="mostrar">
-    <img src="assets/icons/menu-right.svg" >
+    <img src="assets/icons/menu-right.svg">
 </div>

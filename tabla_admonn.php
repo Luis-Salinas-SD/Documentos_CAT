@@ -110,7 +110,7 @@ if (@!$_SESSION['cvesp']) {
                                 $result = $conexion->query($sql);
                                 $numfilas = $result->rowCount();
                                 if ($numfilas == 0) {
-                                    echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
+                                    echo '<script>msmNoRegisters()</script>';
                                 ?>
 
                                     <?php

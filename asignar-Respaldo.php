@@ -1,7 +1,33 @@
-﻿<?php
+﻿<script language="javascript">
+  $(document).ready(function() {
+    $("#area").on('change', function() {
+      $("#area option:selected").each(function() {
+        elegido = $(this).val();
+        $.post("./usuarios.php", {
+          elegido: elegido
+        }, function(data) {
+          $("#usuarios").html(data);
+        });
+      });
+    });
+    $("#usuarios").on('change', function() {
+      $("#usuarios option:selected").each(function() {
+        elegido1 = $(this).val();
+        $.post("./conceptos.php", {
+          elegido1: elegido1
+        }, function(data) {
+          $("#concepto").html(data);
+        });
+      });
+    });
+  });
+</script>
+
+<?php
 //include "php/navbar.php";
 include "bd/conexion.php";
 $idarea = $_SESSION['idarea'];
+
 ?>
 
 <div class="col-12 text-center text-secondary">
@@ -10,6 +36,10 @@ $idarea = $_SESSION['idarea'];
 <div class="col-12 text-end">
   <!-- Button trigger modal -->
   <form class="form-inline" role="search" id="buscar">
+    <div class="form-group">
+      <!--<input type="text" name="s" class="form-control" placeholder="Buscar">-->
+    </div>
+    <!-- <button type="submit" class="btn btn-default">&nbsp;<i class="glyphicon glyphicon-search"></i>&nbsp;</button> -->
     <a data-toggle="modal" href="#newModal" class="btn btn-success m-3">Asignar</a>
   </form>
 </div>
@@ -26,35 +56,58 @@ $idarea = $_SESSION['idarea'];
         <form role="form" method="post" id="agregar"> <!-- action="leerdatos.php" -->
           <input type="hidden" id="folio" value=<?php echo $idfolio; ?> name="folio">
 
+
+
           <div class="form-group mb-2">
-            <label for="name" class="form-label">Unidad administrativa </label>
+            <label for="name" class="form-label"> Área </label>
             <?php
             //consulta datos a cargar en combo
-            $sql = "SELECT * FROM cat_areas WHERE Id != 3 ORDER BY area;";
+            $sql = "SELECT * FROM cat_areas";
             $resultado = $dbh->query($sql);
             ?>
 
             <select name="area" id="area" class="form-control" tabindex="8">
               <option name="areas" value="0"> Elige una opción</option>
               <?php while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-                $area = $row['area'];
-              ?>
+                $area = $row['area'];   ?>
                 <option name="areas" value="<?php echo $row['Id']; ?>"><?php echo trim($area); ?></option>
               <?php } ?>
             </select>
+            <!-- <input type="text" class="form-control" name="name" required cvesp> -->
           </div>
 
+
           <div class="form-group mb-2">
-            <label class="form-label">Servidor público</label>
+            <label for="lastname" class="form-label">Servidor Público</label>
+            <?php
+            $sql1 = "SELECT * FROM tbl_usuarios, cat_areas where cat_areas.Id=1 and cat_areas.Id=tbl_usuarios.idarea  ";
+            $resultado1 = $dbh->query($sql1);
+            ?>
             <select name="usuario" id="usuarios" class="form-select" tabindex="9">
               <option value="0"> Elige un Servidor Publico</option>
+              <?php
+              while ($row1 = $resultado1->fetch(PDO::FETCH_ASSOC)) {
+              ?>
+                <option value="<?php echo $row1['id_usuario']; ?>"><?php echo $row1['cvesp']; ?></option>
+              <?php
+              } ?>
             </select>
+            <!-- <input type="text" class="form-control" name="lastname" required> -->
           </div>
-
           <div class="form-group mb-2">
-            <label for="address" class="form-label">Catálogo de servicios</label>
+            <label for="address" class="form-label">Concepto</label>
+            <?php
+            $sql2 = "SELECT * FROM tbl_usuarios, cat_conceptos where cat_conceptos.id_usuario=1 and cat_conceptos.id_usuario=tbl_usuarios.id_usuario";
+            $resultado2 = $dbh->query($sql2); ?>
             <select name="concepto" class="form-select" tabindex="10" id="concepto">
               <option name="concepto" value="0"> Elige un Concepto</option>
+              <?php
+              while ($row2 = $resultado2->fetch(PDO::FETCH_ASSOC)) {
+              ?>
+                <option value="<?php echo $row2['Id']; ?>"><?php echo $row2['tarea']; ?></option>
+              <?php
+              }
+              ?>
             </select>
           </div>
 
@@ -70,80 +123,6 @@ $idarea = $_SESSION['idarea'];
 </div><!-- /.modal -->
 
 <div id="tabla"></div>
-
-
-
-<!--
-  
--->
-
-<script>
-  //% + + + + + + + + + + + + + + + + + Script para la elección de la asignacion de usuario y conceptos del MODAL + + + + + + + + + + + + + + + + + + + +
-
-  //!variables
-  let area = document.getElementById('area');
-  let opcion = document.getElementById("usuarios");
-  let concepto = document.getElementById('concepto');
-  let nuevaOpcion
-
-  //! Evento para mostrar a los usuarios
-  area.addEventListener('change', (e) => {
-    let idArea = e.target.value;
-    //- Envio de la información a traves de fetch
-    fetch('usuarios.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(idArea)
-      })
-      .then(response => response.json())
-      .then(respuesta => {
-        //= Limpiar las opcines del select
-        opcion.innerHTML = "";
-        //= Acceder al arreglo que viene de la respuesta del arreglo de usuarios.php
-        respuesta.forEach(usuario => {
-          //= Crear un nuevo elemento option
-          nuevaOpcion = document.createElement("option");
-          //= Asignando el valor y nombre a cada uno de ellos
-          nuevaOpcion.value = usuario.id_usuario; //* Asignar el valor del usuario al <option>
-          nuevaOpcion.text = usuario.nombre; //* Asignar el texto del usuario al <option>
-
-          //= Agregar la nueva opción al elemento select
-          opcion.add(nuevaOpcion);
-        });
-      })
-      .catch(error => console.error('Error:' + error))
-
-  })
-  //# Evento para mostrar los conceptos
-  opcion.addEventListener('click', (e) => {
-    let idUsuario = e.target.value;
-
-    fetch('conceptos.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(idUsuario)
-      })
-      .then(response => response.json())
-      .then(rTarea => {
-        // acceder a los elementos individualmente
-        concepto.innerHTML = "";
-        rTarea.forEach(usuario => {
-          // Crear un nuevo elemento option
-          nuevaOpcion = document.createElement("option");
-          nuevaOpcion.value = usuario.id; // Asignar el valor del usuario
-          nuevaOpcion.text = usuario.tarea; // Asignar el texto del usuario
-
-          // Agregar la nueva opción al elemento select
-          concepto.add(nuevaOpcion);
-        });
-      })
-      .catch(erro => console.error('Error:' + erro))
-  })
-</script>
 
 
 

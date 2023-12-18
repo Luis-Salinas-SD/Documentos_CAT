@@ -29,7 +29,7 @@ if (@!$_SESSION['cvesp']) {
         <div class="contenedor">
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h2>Control de Documentos</h2>
+                    <h2>Control de documentos</h2>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@ if (@!$_SESSION['cvesp']) {
 
                     <fieldset class="p-2">
                         <div class="row">
-                            <h4 class="txt-green">Asunto / Documento</h4>
+                            <h4 class="txt-green">Descripción del asunto</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -76,13 +76,13 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechaact" disabled="disabled" type="text" value="<?php echo $fecha = $row['fechaact']; ?>" class="form-control" />
                             </div>
                             <div class=" col-12 col-sm-6">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente</label>
                                 <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>" tabindex="1" />
                             </div>
                         </div>
 
                         <div class="row">
-                            <h4 class="txt-green">Detalle del Documento</h4>
+                            <h4 class="txt-green">Detalle del documento</h4>
                         </div>
                         <hr class="txt-green mb-4">
 
@@ -92,7 +92,7 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechadoc" disabled="disabled" type="text" value="<?php echo $fecha = $row['fecha_doc']; ?>" class="form-control" />
                             </div>
                             <div class="col-12 col-md-6">
-                                <label for="" class="form-label">Referencia</label>
+                                <label for="" class="form-label">Número de referencia</label>
                                 <input name="referencia" disabled="disabled" class="form-control" type="text" value="<?php echo $row['docreferencia']; ?>" tabindex="4" />
                             </div>
                         </div>

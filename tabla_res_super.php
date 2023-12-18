@@ -3,10 +3,10 @@
         <thead>
             <tr class="text-center">
                 <th>Área</th>
-                <th>Servidor Público</th>
+                <th>Servidor público</th>
                 <th>Concepto</th>
-                <th>Tipo de Resolución</th>
-                <th>Número de Resolución</th>
+                <th>Tipo de resolución</th>
+                <th>Número de resolución</th>
                 <th>Fecha</th>
                 <th>Notas</th>
 

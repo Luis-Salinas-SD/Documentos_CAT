@@ -1,22 +1,20 @@
 <?php
 session_start();
-include("./bd/conexion2.php");
-//guardardo de formulario 
-$idfolio = $_POST['idfolio'];
-$fechaact = $_POST['fechaact'];
-$remitente = $_POST['remitente'];
-$fechadoc = $_POST['fechadoc'];
-$descripcion = $_POST['asunto'];
-$referencia = $_POST['referencia'];
-$observacion = $_POST['observacion'];
-$usu = $_SESSION['cvesp'];
+include("./bd/conndb.php");
 
+$idfolio = $_POST['idfolio'];
+$tipodoc = $_POST['tipo_doc'];
+$num_doc = $_POST['num_doc'];
+$fechares = $_POST['fechares'];
+$cvesp = $_POST['usu'];
+$nota = $_POST['nota'];
 
 $idfolio = $idfolio;
 
-$query = utf8_decode("INSERT INTO tbl_docs(Idfolio,fechaact,remitente,fecha_doc,docreferencia,descripcion,emitido,observacion)
-		VALUES ($idfolio,'$fechaact','$remitente','$fechadoc','$referencia','$descripcion', '$usu','$observacion')");
-$result = $mysqli->query($query);
+$query1 = ("UPDATE tbl_resolucion SET tipodocref='$tipodoc', nodoc='$num_doc', fecha='$fechares', estatus= 0, nota='$nota'
+					WHERE docref=$idfolio and sprecibe='$cvesp' ");
+$result = $conexion->query($query1);
+
 
 if ($_FILES["archivo"]["error"] > 0) {
 	echo '<script>sinArchivo()</script> ';
@@ -43,21 +41,22 @@ if ($_FILES["archivo"]["error"] > 0) {
 				echo '<script>guardarArchivo()</script> ';
 			} else {
 				echo '<script>alert("Error al guardar archivo")</script> ';
-				echo "<script>location.href='tabla_oficialia.php' </script>";
+				echo "<script>location.href='tabla_super.php' </script>";
 			}
 		} else {
 			echo '<script>alert("Archivo ya existe")</script> ';
-			echo "<script>location.href='tabla_oficialia_prin.php' </script>";
+			echo "<script>location.href='tabla_super.php' </script>";
 		}
 	} else {
 		echo '<script>alert("Archivo no permitido o excede el tamaño")</script> ';
-		echo "<script>location.href='tabla_oficialia.php' </script>";
+		echo "<script>location.href='tabla_super.php' </script>";
 	}
 }
 
 if ($result) {
+	echo "<script>location.href='tabla_super-div.php' </script>";
 	echo '<script>registroGuardado()</script> ';
-	echo "<script>location.href='tabla_oficialia.php' </script>";
+	echo "Algo bien!";
 } else {
 	echo "no exitosa";
 }

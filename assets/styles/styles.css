@@ -1,9 +1,9 @@
 :root {
-    --bg-vino: #892036;
+    --bg-vino: rgb(137, 32, 54);
     --bg-oro: #BC955A;
-    --bg-verde: #12322B;
-    --bg-oro-l: #EFE0CA;
-    --bg-verde-l: #235B4E;
+    --bg-verde: rgb(18, 50, 43);
+    --bg-oro-l: rgb(239, 224, 202);
+    --bg-verde-l: rgb(35, 91, 78);
     --bg-gray: #BABABA;
     --bg-mal: hsla(353, 80%, 60%, 0.8);
     --bg-medio: hsl(43, 100%, 70%, 0.8);
@@ -31,6 +31,11 @@ table thead tr {
 
 body {
     background-color: hsla(0, 0%, 97%, 0.801) !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.15rem rgba(23, 122, 99, 0.3);
+    border-color: rgba(19, 107, 86, 0.3);
 }
 
 /** Campanita de Notificación */
@@ -174,9 +179,10 @@ table td {
     padding-top: 19px !important;
 }
 
-th{
+th {
     text-align: center !important;
 }
+
 .form-control-sm {
     width: 350px !important;
 }
@@ -259,7 +265,7 @@ th{
     left: 0px;
 }
 
-.mostrar{
+.mostrar {
     width: 35px;
     height: 35px;
     position: absolute;
@@ -269,12 +275,12 @@ th{
     border-radius: 50%;
 }
 
-.mostrar:hover{
+.mostrar:hover {
     background: var(--bg-verde-l);
 
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
 }
 

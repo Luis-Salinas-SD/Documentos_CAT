@@ -1,24 +1,3 @@
-/* let btn = document.querySelector('#cerrar');
-let menu = document.querySelector('#menu');
-let content = document.querySelector('.contenedor');
-let btnShow = document.querySelector('.mostrar');
-
-
-
-btn.addEventListener("click", () => {
-    menu.classList.add('ocultar-menu');
-    content.classList.toggle('content-full')
-})
-
-btnShow.addEventListener('click', () => {
-    menu.classList.add('mostrar-menu');
-    content.classList.remove('content-full');
-    content.classList.add('contenedor');
-    setTimeout(function () {
-        location.reload();
-    }, 700);
-}) */
-
 let menu = document.querySelector('#menu')
 let btnCerrar = document.querySelector('#cerrar')
 let btnMostrar = document.querySelector('#mostrar')

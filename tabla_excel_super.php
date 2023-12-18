@@ -27,7 +27,7 @@ if (@!$_SESSION['cvesp']) {
 
             <div class="card m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h3>Búsqueda y Exportación:</h3>
+                    <h3>Búsqueda y exportación:</h3>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@ if (@!$_SESSION['cvesp']) {
                             $_pagi_result = $conexion->query($_pagi_sql);
                             $numfilas = $_pagi_result->rowCount();
                             if ($numfilas == 0) {
-                                echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
+                                echo '<script>msmNoRegisters()</script>';
                             ?>
 
                                 <?php

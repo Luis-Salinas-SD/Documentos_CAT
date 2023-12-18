@@ -117,9 +117,8 @@ if (@!$_SESSION['cvesp']) {
 
                     <div class="col-12">
                         <label for="archivo" class="form-label">Archivo</label>
-
-                        <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf">
-                        <span class="text-secondary"><b>NOTA: </b> El sistema solo acepta archivos en formato pdf que no excedan el tamaño máximo permitido (1 Mb )</span>
+                        <input type="file" class="form-control mb-2" id="archivo" name="archivo" accept="application/pdf">
+                        <span class="text-secondary pt-3"><b>NOTA: </b> El sistema solo acepta archivos en formato pdf que no excedan el tamaño máximo permitido (25 MB)</span>
                         <br>
 
                         <?php
@@ -155,7 +154,7 @@ if (@!$_SESSION['cvesp']) {
                     </div>
 
                     <div class="row">
-                        <div class="col-12 d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center mt-3">
                             <div class="m-2">
                                 <input type="submit" title="Guardar" value="Guardar" class="btn btn-success" id="opcion" tabindex="11" />
                             </div>
@@ -167,7 +166,6 @@ if (@!$_SESSION['cvesp']) {
 
         <div class="col-12 card mt-4 mx-2 p-3">
             <?php include('asignar_super.php') ?>
-
         </div>
 
     </div>

@@ -17,7 +17,7 @@ WHERE docref=$idfolio and sprecibe='$cvesp' ");
 $result = $conexion->query($query1);
 	
 	if($_FILES["archivo"]["error"]>0){
-		echo '<script>alert("Sin cargar archivo")</script> ';
+		echo '<script>sinArchivo()</script> ';
 		} else {
 		
 		$permitidos = array("application/pdf");
@@ -39,7 +39,7 @@ $result = $conexion->query($query1);
 				
 				if($resultado){
 					//echo "Archivo Guardado";
-					echo '<script>alert("Archivo Guardado")</script> ';
+					echo '<script>guardarArchivo()</script> ';
 					
 										
 				
@@ -61,7 +61,7 @@ $result = $conexion->query($query1);
 		
 	}
 	if($result){
-		echo '<script>alert("REGISTRO GUARDADO")</script> ';
+		echo '<script>registroGuardado()</script> ';
 		echo "<script>location.href='tabla_admon.php' </script>";
 
 		  

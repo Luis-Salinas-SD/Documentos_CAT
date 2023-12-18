@@ -19,6 +19,8 @@ if (!empty($_POST)) {
 			$idconcep = trim($_POST['concepto']);
 			$idarea = trim($_POST['area']);
 
+			echo $idconcep;
+
 			$sql = ("INSERT INTO tbl_asignados(idfolio, cvesp, idconcepto,id_area) VALUES($idfolio,'$cvesp',$idconcep,$idarea)");
 			$result = $dbh->query($sql);
 

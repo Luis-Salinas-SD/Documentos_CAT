@@ -19,21 +19,23 @@ if (@!$_SESSION['cvesp']) {
 <body>
     <?php
     $tipo = $_SESSION['tipo_usuario'];
-    if ($tipo == 2) {
+    if ($tipo == 2 || $tipo == 5) {
     ?>
         <!--! Nav Menu  -->
         <?php include_once('./nav-menu.php') ?>
         <div class="contenedor">
-            <div class="card mb-5 m-2 shadow">
+
+            <div class="card mb-5 m-2 shadow bg-vino">
                 <div class="card-body">
-                    <h3 class="text-secondary">Resolución</h3>
+                    <h3>Resolución</h3>
                 </div>
             </div>
+
             <div class="card mx-2 p-2">
                 <?php
                 $idfolio = $_GET['idfolio'];
                 ?>
-                <form action="guardar_res_super.php" method="post" enctype="multipart/form-data">
+                <form action="guardar_res_super-div.php" method="post" enctype="multipart/form-data">
                     <?php
                     /*
                     $i = 1;
@@ -70,19 +72,19 @@ if (@!$_SESSION['cvesp']) {
                     <input type="hidden" name="referencia" value="<?php echo $row['docreferencia']; ?>">
 
                     <fieldset class="p-2">
-                        <div class="row text-primary">
+                        <div class="row txt-green">
                             <h4>Resolución</h4>
                         </div>
-                        <hr class="text-primary mb-4">
+                        <hr class="txt-green mb-4">
 
                         <div class="row mb-2">
                             <div class="col-12 col-sm-4">
-                                <label for="" class="form-label">Tipo de Documento de la resolución</label>
-                                <input name="tipo_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="1">
+                                <label for="" class="form-label">Tipo de documento de la resolución</label>
+                                <input name="tipo_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" tabindex="1">
                             </div>
                             <div class="col-12 col-sm-4">
-                                <label for="" class="form-label">Número de Documento de la resolución</label>
-                                <input name="num_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="2">
+                                <label for="" class="form-label">Número de documento de la resolución</label>
+                                <input name="num_doc" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" tabindex="2">
                             </div>
                             <div class="col-12 col-sm-4">
                                 <label for="">Fecha de la resolución</label>
@@ -98,17 +100,17 @@ if (@!$_SESSION['cvesp']) {
                         <div class="col-12 mb-2">
                             <div class="col-12">
                                 <label for="" class="form-label">Notas:</label>
-                                <input name="nota" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" onpaste="return false" tabindex="3">
+                                <input name="nota" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="" required="required" tabindex="3">
                             </div>
                         </div>
 
                     </fieldset>
 
                     <fieldset class="p-2">
-                        <div class="row text-primary">
-                            <h4>Asunto / Documento</h4>
+                        <div class="row txt-green">
+                            <h4>Descripción del asunto</h4>
                         </div>
-                        <hr class="text-primary mb-4">
+                        <hr class="txt-green mb-4">
 
                         <div class="row mb-3">
                             <div class="col-12 col-sm-3">
@@ -121,17 +123,17 @@ if (@!$_SESSION['cvesp']) {
                                 <input name="fechares" type="hidden" value="20<?php echo $fecha; ?>" />
                             </div>
                             <div class="col-12 col-sm-9">
-                                <label for="" class="form-label">Remitente</label>
+                                <label for="" class="form-label">Nombre del remitente</label>
                                 <input name="remitente" disabled="disabled" class="form-control" type="text" value="<?php echo $row['remitente']; ?>">
                             </div>
                         </div>
                     </fieldset>
 
                     <fieldset class="p-2">
-                        <div class="row text-primary">
+                        <div class="row txt-green">
                             <h4>Detalle del Documento</h4>
                         </div>
-                        <hr class="text-primary mb-4">
+                        <hr class="text-green mb-4">
 
                         <div class="row mb-3">
                             <div class="col-12 col-sm-3">
@@ -196,7 +198,7 @@ if (@!$_SESSION['cvesp']) {
                         </div>
 
                         <div class="row mb-2">
-                            <div class="col-12 d-flex justify-content-center">
+                            <div class="col-12 d-flex justify-content-center mt-3">
                                 <input type="submit" title="Guardar" value="Guardar" class="btn btn-success" id="opcion" tabindex="4" />
                             </div>
                         </div>

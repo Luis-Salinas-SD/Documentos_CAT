@@ -55,6 +55,16 @@ if ($f = $resultado->fetch(PDO::FETCH_ASSOC)) {
 				$_SESSION['id_usuario'] = $f['id_usuario'];
 				$_SESSION['tipo_usuario'] = $f['tipo_usuario'];
 				header("Location:tabla_oficialia.php");
+			} elseif ($tipo == 5) {
+				$sql1 = "UPDATE  tbl_usuarios SET estado='1' WHERE cvesp= '$usuario' and tipo_usuario=$tipo";
+				$result1 = $conexion->query($sql1);
+				$_SESSION['cvesp'] = $f['cvesp'];
+				$_SESSION['nombre'] = $f['nombre'];
+				$_SESSION['tipo_usuario'] = $f['tipo_usuario'];
+				$_SESSION['idarea'] = $f['idarea'];
+				$_SESSION['id_usuario'] = $f['id_usuario'];
+				$_SESSION['tipo_usuario'] = $f['tipo_usuario'];
+				header("Location:tabla_super-div.php");
 			}
 		} else {
 			echo '<script>alert("SESION INICIADA... FAVOR DE CERRAR SESION ANTERIOR PARA PODER INGRESAR")</script> ';

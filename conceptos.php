@@ -2,15 +2,22 @@
 
 require('./bd/conexion.php');
 
-    $html = " ";
-$elegido1= $_POST["elegido1"];
- $sql1 = "SELECT * FROM tbl_usuarios, cat_conceptos where cat_conceptos.id_usuario=$elegido1 and cat_conceptos.id_usuario=tbl_usuarios.id_usuario";
-        $resultado = $dbh->query($sql1); 
-        while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-            $idconcepto= $row['Id'];
-            $tarea= $row['tarea'];
-        $html = "<option name='turnado' value= $idconcepto>  $tarea </option>";
+$json = file_get_contents('php://input');
+$idUsuario = json_decode($json, true);
 
-echo $html;
+$tareas = array();
+
+$sql1 = "SELECT * FROM cat_conceptos WHERE id_usuario = $idUsuario;";
+$resultado = $dbh->query($sql1);
+
+while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+    $id = $row['Id'];
+    $tarea = $row['tarea'];
+
+    $tareas[] = array(
+        'id' => $id,
+        'tarea' => $tarea
+    );
 }
-?>
+
+echo json_encode($tareas);

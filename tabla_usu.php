@@ -19,7 +19,7 @@ if (@!$_SESSION['cvesp']) {
 <body>
 	<?php
 	$tipo = $_SESSION['tipo_usuario'];
-	if ($tipo == 3) {
+	if ($tipo == 3 || $tipo == 5) {
 	?>
 
 		<?php include_once('./nav-menu.php') ?>
@@ -29,7 +29,7 @@ if (@!$_SESSION['cvesp']) {
 			<!-- Header -->
 			<div class="card mb-5 m-2 shadow bg-vino">
 				<div class="card-body">
-					<h3>Control de Documentos
+					<h3>Control de documentos
 						<?php $date = date_create('2000');
 						echo date_format($date, 'Y'); ?>
 					</h3>
@@ -53,8 +53,8 @@ if (@!$_SESSION['cvesp']) {
 							<thead>
 								<tr class="text-center">
 									<th>Consecutivo</th>
-									<th>Fecha del Documento</th>
-									<th>Número de Oficio</th>
+									<th>Fecha del documento</th>
+									<th>Número de oficio</th>
 									<th>Nombre del remitente</th>
 									<th>Concepto</th>
 									<th>Estatus</th>
@@ -79,7 +79,7 @@ if (@!$_SESSION['cvesp']) {
 								$_pagi_result = $conexion->query($_pagi_sql);
 								$numfilas = $_pagi_result->rowCount();
 								if ($numfilas == 0) {
-									echo '<script>alert(" NO CUENTA CON REGISTROS EN ESTA SECCION ")</script>';
+									echo '<script>msmNoRegisters()</script>';
 								} else {
 									$_pagi_nav_estilo = "cls_pagi";
 									$enlacesdepaginacion = 11;
