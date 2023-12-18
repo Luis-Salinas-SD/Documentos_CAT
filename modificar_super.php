@@ -33,10 +33,9 @@ if (@!$_SESSION['cvesp']) {
             $idarea = $_SESSION['idarea'];
             ?>
             <div class="col-12 text-end">
-
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
-                        <form id="ver" action="tabla_super.php" method="post">
+                        <form id="ver" action="tabla_super-div.php" method="post">
                             <button type="submit" class="btn btn-secondary m-3" id="opcion">
                                 <img src="./assets/icons/back.svg" alt="" srcset="">
                                 Atrás
@@ -44,9 +43,9 @@ if (@!$_SESSION['cvesp']) {
                         </form>
                     </div>
                 </div>
-
             </div>
-            <form action=" " method="post" enctype="multipart/form-data">
+
+            <form action="guardar_modificar-div.php" method="post" enctype="multipart/form-data">
                 <input name="idfolio" type="hidden" value="<?php echo $idfolio ?>" />
                 <input type="hidden" id="area" value=<?php echo $idarea; ?> name="area">
 
@@ -55,17 +54,14 @@ if (@!$_SESSION['cvesp']) {
                 require("./bd/conndb1.php");
                 $conexion = getConn();
                 $usu = $_SESSION['cvesp'];
-
-
                 $sql = "SELECT * FROM tbl_docs WHERE tbl_docs.Idfolio=$idfolio";
                 $result = $conexion->query($sql);
                 $row = $result->fetch(PDO::FETCH_ASSOC);
-
                 ?>
 
                 <fieldset class="p-2">
                     <div class="row">
-                        <h4 class="txt-green">Asunto / Documento</h4>
+                        <h4 class="txt-green">Descripción del asunto</h4>
                     </div>
                     <hr class="txt-green mb-4">
 
@@ -77,7 +73,7 @@ if (@!$_SESSION['cvesp']) {
                             <input name="fechaact" type="hidden" value="<?php echo $row['fechaact']; ?>" />
                         </div>
                         <div class="col-12 col-sm-6 mb-3">
-                            <label for="" class="form-label">Remitente</label>
+                            <label for="" class="form-label">Nombre del remitente</label>
                             <input name="remitente" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['remitente']; ?>" required="required" onpaste="return false" tabindex="2" />
                         </div>
 
@@ -94,7 +90,7 @@ if (@!$_SESSION['cvesp']) {
                             <input name="fechadoc" id="fechaid1" type="date" value="<?php echo $fecha = $row['fecha_doc']; ?>" required="required" class="form-control" tabindex="3" />
                         </div>
                         <div class="col-12 col-sm-6 mb-3">
-                            <label for="">Referencia</label>
+                            <label for="">Número de referencia</label>
                             <input name="referencia" class="form-control" type="text" onKeyPress="return letra(event)" onKeyUp="activar1()" value="<?php echo $row['docreferencia']; ?>" required="required" onpaste="return false" tabindex="4" />
                         </div>
                     </div>
@@ -112,7 +108,6 @@ if (@!$_SESSION['cvesp']) {
 
                     <div class="row mb-1">
                         <input name="usu" type="hidden" value="<?php echo $_SESSION['cvesp']; ?>" />
-                        <!--mostrar archivo para modificar -->
                     </div>
 
                     <div class="col-12">
@@ -129,7 +124,6 @@ if (@!$_SESSION['cvesp']) {
                                 if (!is_dir($archivo)) {
                                     $i++;
                                     //echo "<div class='center'><iframe  src='files/$idfolio/$archivo' width='100%' frameborder='0' height='550' align='center'></iframe></div>";
-
 
                                     echo "<button type='button' class='btn btn-danger m-1' data-bs-toggle='modal' data-bs-target='#ident_$i' data-toggle='tooltip' data-placement='top' title='$archivo'><img src='./assets/icons/pdf.svg'> </button>";
                                     echo "<div class='modal fade' id='ident_$i' tabindex='-1' aria-labelledby='$archivo' aria-hidden='true'>
