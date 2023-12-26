@@ -55,9 +55,6 @@ if (@!$_SESSION['cvesp']) {
                                 $conexion = getConn();
                                 $usu = $_SESSION['id_usuario'];
                                 $idarea = $_SESSION['idarea'];
-                                printf($idarea);
-                                echo "<br>";
-                                printf($usu);
                                 $i = 1;
                                 $_pagi_sql = "SELECT distinct(d.idfolio), d.fecha_doc, d.docreferencia, d.remitente, d.descripcion FROM tbl_docs d, tbl_asignados a where  id_area=$idarea and fechaact >= '2019-01-01' and a.idfolio = d.Idfolio order by d.Idfolio asc";
                                 //and fecha >='2019-01-01'

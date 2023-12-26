@@ -73,10 +73,6 @@ $idarea = $_SESSION['idarea'];
 
 
 
-<!--
-  
--->
-
 <script>
   //% + + + + + + + + + + + + + + + + + Script para la elección de la asignacion de usuario y conceptos del MODAL + + + + + + + + + + + + + + + + + + + +
 

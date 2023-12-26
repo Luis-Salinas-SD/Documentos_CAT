@@ -35,7 +35,7 @@ if (@!$_SESSION['cvesp']) {
             <div class="col-12 text-end">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
-                        <form id="ver" action="tabla_super.php" method="post">
+                        <form id="ver" action="tabla_super-div.php" method="post">
                             <button type="submit" class="btn btn-secondary m-3" id="opcion">
                                 <img src="./assets/icons/back.svg" alt="" srcset="">
                                 Atrás
@@ -45,7 +45,7 @@ if (@!$_SESSION['cvesp']) {
                 </div>
             </div>
 
-            <form action="guardar_modificar-cal.php" method="post" enctype="multipart/form-data">
+            <form action="guardar_modificar-div.php" method="post" enctype="multipart/form-data">
                 <input name="idfolio" type="hidden" value="<?php echo $idfolio ?>" />
                 <input type="hidden" id="area" value=<?php echo $idarea; ?> name="area">
 
@@ -142,7 +142,6 @@ if (@!$_SESSION['cvesp']) {
                                 }
                             }
                         }
-
                         ?>
 
                     </div>

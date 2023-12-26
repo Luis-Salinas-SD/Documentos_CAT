@@ -18,6 +18,9 @@ if (@!$_SESSION['cvesp']) {
 
 <body>
     <?php
+
+    $i;
+
     $tipo = $_SESSION['tipo_usuario'];
     if ($tipo == 2 || $tipo == 5) {
     ?>
@@ -56,6 +59,7 @@ if (@!$_SESSION['cvesp']) {
                     $row = $result->fetch(PDO::FETCH_ASSOC);*/
                     ?>
                     <?php
+                    $i=1;
                     require("./bd/conndb1.php");
                     $conexion = getConn();
                     $usu = $_SESSION['id_usuario'];
@@ -165,6 +169,7 @@ if (@!$_SESSION['cvesp']) {
                                 <label for="archivo" class="col-sm-2 control-label">Archivo</label>
                                 <input type="file" class="form-control" id="archivo" name="archivo">
                                 <?php
+                                $i;
                                 $path = "files/" . $idfolio;
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);

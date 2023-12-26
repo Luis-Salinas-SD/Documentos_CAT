@@ -13,7 +13,7 @@ if (@!$_SESSION['cvesp']) {
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <!-- CSS y Scripts -->
     <?php include_once('./templates/header.php') ?>
-    <title>Control de Documentos</title>
+    <title>Control de documentos</title>
 </head>
 
 <body>
@@ -63,20 +63,15 @@ if (@!$_SESSION['cvesp']) {
                                 if ($numfilas == 0) {
                                     echo '<script>msmNoRegisters()</script>';
                                 } else {
-                                    //$_pagi_nav_estilo = "cls_pagi";
-                                    //$enlacesdepaginacion = 11;
-                                    //include("paginator2.inc.php");
                                     while ($i <= 1) {
-                                        //$x = $_pagi_hasta;
                                         while ($row = $_pagi_result->fetch(PDO::FETCH_ASSOC)) {
                                             $idfolio = $row['idfolio'];
                                             $fecha_doc = $row['fecha_doc'];
                                             $docreferencia = $row['docreferencia'];
                                             $remitente = $row['remitente'];
                                             $descripcion = $row['descripcion'];
-                                            include("./asignados_super.php");
+                                            include("./asignados_super-div.php");
                                 ?>
-                                            </tr>
                                 <?php
                                             $i++;
                                         }

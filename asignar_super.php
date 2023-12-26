@@ -23,7 +23,7 @@
   });
 </script> -->
 
-<script language="javascript">
+<!-- <script language="javascript">
   $(document).ready(function() {
 
     $("#usuarios").on('change', function() {
@@ -37,7 +37,7 @@
       });
     });
   });
-</script>
+</script> -->
 
 <?php
 //include "php/navbar.php";
@@ -87,20 +87,10 @@ $idarea = $_SESSION['idarea'];
             </select>
             <!-- <input type="text" class="form-control" name="lastname" required> -->
           </div>
-          <div class="form-group mb-3">
-            <label for="address" class="form-label">Concepto</label>
-            <?php
-            $sql2 = "SELECT * FROM tbl_usuarios, cat_conceptos where cat_conceptos.id_usuario=4 and cat_conceptos.id_usuario=tbl_usuarios.id_usuario";
-            $resultado2 = $dbh->query($sql2); ?>
-            <select name="concepto" class="form-control" tabindex="10" id="concepto">
-              <option value="0"> Elige un Concepto</option>
-              <?php
-              while ($row2 = $resultado2->fetch(PDO::FETCH_ASSOC)) {
-              ?>
-                <option value="<?php echo $row2['Id']; ?>"><?php echo $row2['tarea']; ?></option>
-              <?php
-              }
-              ?>
+          <div class="form-group mb-2">
+            <label for="address" class="form-label">Catálogo de servicios</label>
+            <select name="concepto" class="form-select" tabindex="10" id="concepto">
+              <option name="concepto" value="0"> Elige un Concepto</option>
             </select>
           </div>
 
@@ -116,6 +106,41 @@ $idarea = $_SESSION['idarea'];
 
 <div id="tabla" class="col-12 p-2"></div>
 
+
+
+<script>
+  let opcion = document.getElementById('usuarios');
+  let concepto = document.getElementById('concepto');
+  let nuevaOpcion
+
+
+  opcion.addEventListener('click', (e) => {
+    let idUsuario = e.target.value;
+
+    fetch('conceptos.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(idUsuario)
+      })
+      .then(response => response.json())
+      .then(rTarea => {
+        // acceder a los elementos individualmente
+        concepto.innerHTML = "";
+        rTarea.forEach(usuario => {
+          // Crear un nuevo elemento option
+          nuevaOpcion = document.createElement("option");
+          nuevaOpcion.value = usuario.id; // Asignar el valor del usuario
+          nuevaOpcion.text = usuario.tarea; // Asignar el texto del usuario
+
+          // Agregar la nueva opción al elemento select
+          concepto.add(nuevaOpcion);
+        });
+      })
+      .catch(erro => console.error('Error:' + erro))
+  })
+</script>
 
 
 
